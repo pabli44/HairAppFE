@@ -1,0 +1,38 @@
+<div class="container m-5">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h2>Register Form</h2>
+        <div class="form-group w-25">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" class="form-control" alfabeticoTag>
+        </div>
+
+        <div class="form-group w-25">
+            <label for="lastName">Last Name:</label>
+            <input type="text" formControlName="lastName" class="form-control" alfabeticoTag>
+        </div>
+
+        <div class="form-group w-25">
+            <label for="phone">Phone:</label>
+            <input type="text" formControlName="phone" class="form-control" appNumerosTag>
+        </div>
+
+        <div class="form-group w-25">
+            <label for="email">Email:</label>
+            <input type="text" formControlName="email" class="form-control" appEmailvalidator>
+        </div>
+
+        <div class="form-select w-25">
+            <label for="profile">Profile:</label>
+            <select class="form-control" (change)="profileSelected($event)">
+                <option selected>Choose one...</option>
+                <option value="1">Both</option>
+                <option value="2">Professional</option>
+                <option value="3">Client</option>
+            </select>
+        </div>
+        
+        <br>
+        
+        <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Submit</button>
+    </form>
+</div>

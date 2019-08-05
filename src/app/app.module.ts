@@ -1,20 +1,33 @@
+//modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+//components
 import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { SignComponent } from './components/sign/sign.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
+import { LoginComponent } from './components/login/login.component';
 
+//directives
+import { AlfabeticoDirective } from './directives/alfabetico.directive';
+import { AlfabeticoNumericoDirective } from './directives/alfabeticonumerico.directive';
+import { EmailValidator } from "./directives/emailvalidator.directive";
+import { NumerosDirective } from './directives/numeros.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactComponent,
-    SignComponent,
-    AboutComponent
+    RegisterComponent,
+    AboutComponent,
+    LoginComponent,
+    AlfabeticoDirective,
+    AlfabeticoNumericoDirective,
+    EmailValidator,
+    NumerosDirective
   ],
   imports: [
     BrowserModule,

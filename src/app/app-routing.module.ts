@@ -4,13 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 //import components
 import { ContactComponent } from './components/contact/contact.component'; 
-import { SignComponent } from './components/sign/sign.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path: 'contact', component: ContactComponent},
-  {path: 'sign', component: SignComponent},
-  {path: 'about', component: AboutComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
