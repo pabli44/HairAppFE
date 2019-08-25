@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //components
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
@@ -20,6 +21,7 @@ import { NumerosDirective } from './directives/numeros.directive';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     ContactComponent,
     RegisterComponent,
     AboutComponent,
