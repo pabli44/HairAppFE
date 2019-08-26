@@ -14,4 +14,8 @@ export class LoginComponent{
         email: new FormControl(''),
         password: new FormControl('')
     });
+
+    onSubmit = () =>{
+        alert("On Submit");
+    }
 }
