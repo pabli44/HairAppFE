@@ -16,6 +16,10 @@ export class LoginComponent{
     });
 
     onSubmit = () =>{
-        alert("On Submit");
+
+        let value = this.loginForm.value;
+        this.loginForm.controls['email'].setValue('Hola');
+        console.log(value.email);
+        //alert("On Submit");
     }
 }
