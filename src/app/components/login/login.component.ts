@@ -14,4 +14,12 @@ export class LoginComponent{
         email: new FormControl(''),
         password: new FormControl('')
     });
+
+    onSubmit = () =>{
+
+        let value = this.loginForm.value;
+        this.loginForm.controls['email'].setValue('Hola');
+        console.log(value.email);
+        //alert("On Submit");
+    }
 }
