@@ -3,8 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: "http://localhost:8081/apiv1/"
+  //url: "server"
 };
+
+
+export const servicesNames = {
+  profiles: "profiles",
+  serviceDetails: "serviceDetails",
+  services: "services",
+  transactions: "transactions",
+  users: "users"
+}
+
 
 /*
  * For easier debugging in development mode, you can import the following file
