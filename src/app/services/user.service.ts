@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from './../../environments/environment';
-import { User } from '../models/user.model';
+import { environment, servicesNames } from './../../environments/environment';
+import { User } from '../models/user';
 
 
 @Injectable()
@@ -15,19 +15,19 @@ export class UserService{
     }
 
     saveUser(body: any) {
-        return this.http.post(this.url + 'users', body, this.headers);
+        return this.http.post(this.url + servicesNames.users, body, this.headers);
     }
 
     updateUser(id: any,body: any) {
-        return this.http.put(this.url + 'users/'+id, body, this.headers);
+        return this.http.put(this.url + servicesNames.users + "/" +id, body, this.headers);
     }
 
     deleteUser(id: any){
-        return this.http.delete(this.url + 'users/'+id, this.headers)
+        return this.http.delete(this.url + servicesNames.users + "/" +id, this.headers)
     }
 
     getUsers() {
-        return this.http.get<User[]>(this.url + 'users');
+        return this.http.get<User[]>(this.url + servicesNames.users);
     }
     
 }

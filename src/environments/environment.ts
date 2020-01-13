@@ -4,9 +4,18 @@
 
 export const environment = {
   production: false,
-  url: "localhost"
+  url: "http://localhost:8081/apiv1/"
   //url: "server"
 };
+
+
+export const servicesNames = {
+  profiles: "profiles",
+  serviceDetails: "serviceDetails",
+  services: "services",
+  transactions: "transactions",
+  users: "users"
+}
 
 
 /*
