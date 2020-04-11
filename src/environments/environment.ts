@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: "http://localhost:8081/apiv1/"
+  url: "http://localhost:8080/hairtalent/apiv1/"
   //url: "server"
 };
 
