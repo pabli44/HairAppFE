@@ -1,6 +1,7 @@
 <div class="container m-5">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <h2>Register Form</h2>
+    <h2>Register Form</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-inline">
+        
         
         <!-- Mejora de apariencia, líneal
         <div class="row">
@@ -9,42 +10,54 @@
         </div>
         -->
 
-        <div class="form-group w-25">
-            <label for="name">Name:</label>
-            <input type="text" formControlName="name" class="form-control" alfabeticoTag>
+        <div class="row mb-4">
+            <div class="form-group col-sm-3 mr-2">
+                <label for="name">Name:</label>
+                <input type="text" formControlName="name" class="form-control" alfabeticoTag>
+            </div>
+    
+            <div class="form-group col-sm-3 mr-2">
+                <label for="lastName">Last Name:</label>
+                <input type="text" formControlName="lastName" class="form-control" alfabeticoTag>
+            </div>
+    
+            <div class="form-group col-sm-3 mr-2">
+                <label for="phone">Phone:</label>
+                <input type="text" formControlName="phone" class="form-control" appNumerosTag>
+            </div>
         </div>
 
-        <div class="form-group w-25">
-            <label for="lastName">Last Name:</label>
-            <input type="text" formControlName="lastName" class="form-control" alfabeticoTag>
+        <div class="row mb-4">
+            <div class="form-group col-sm-3 mr-2">
+                <label for="email">Email:</label>
+                <input type="text" formControlName="email" class="form-control" appEmailvalidator>
+            </div>
+
+            <div class="form-group col-sm-3 mr-2">
+                <label for="lastName">Username:</label>
+                <input type="text" formControlName="userName" class="form-control">
+            </div>
+    
+            <div class="form-group col-sm-3 mr-2">
+                <label for="password">Password:</label>
+                <input type="password" formControlName="password" class="form-control">
+                <!-- <label><input type="checkbox"> Show password</label> -->
+            </div>
         </div>
 
-        <div class="form-group w-25">
-            <label for="phone">Phone:</label>
-            <input type="text" formControlName="phone" class="form-control" appNumerosTag>
+        <div class="row mb-4">
+            <div class="form-group col-sm-6">
+                <label for="profile">Profile:</label>
+                <select class="form-control" (change)="profileSelected($event)" formControlName="profile">
+                    <option selected>Choose one...</option>
+                    <option value="1">Client</option>
+                    <option value="2">Professional</option>
+                </select>
+            </div>
         </div>
 
-        <div class="form-group w-25">
-            <label for="email">Email:</label>
-            <input type="text" formControlName="email" class="form-control" appEmailvalidator>
-        </div>
 
-        <div class="form-group w-25">
-            <label for="lastName">UserName:</label>
-            <input type="text" formControlName="userName" class="form-control">
-        </div>
-
-        <div class="form-select w-25">
-            <label for="profile">Profile:</label>
-            <select class="form-control" (change)="profileSelected($event)" formControlName="profile">
-                <option selected>Choose one...</option>
-                <option value="1">Client</option>
-                <option value="2">Professional</option>
-            </select>
-        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Submit</button>    
         
-        <br>
-        
-        <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Submit</button>
     </form>
 </div>
