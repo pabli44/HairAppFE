@@ -19,32 +19,36 @@ export class UserService{
 
     }
 
-    saveUser(user: User) {
-        console.log(user);
-        return this.http.post(this.url + servicesNames.users, user, this.headers).subscribe(data => {
-            console.log("Result: "+ stringify(data));
+    saveUser(user: User){
+        this.getUserByUsername(user.userName).subscribe(data => {
+            if(data[0]!=null){
+                console.log("User Exists!");
+            }else{
+                this.http.post(this.url + servicesNames.users, user, this.headers).subscribe(user =>{
+                    console.log("User was Saved!");
+                });
+            }
         });
     }
-
+    
     updateUser(id: number,user: User) {
-        return this.http.put(this.url + servicesNames.users + "/" +id, user, this.headers).subscribe(data =>{
-            console.log("Result: "+ stringify(data));
-        });
+        return this.http.put(this.url + servicesNames.users + "/" +id, user, this.headers);
     }
 
     deleteUser(id: number){
-        return this.http.delete(this.url + servicesNames.users + "/" +id, this.headers).subscribe(data => {
-            console.log("Result: "+ stringify(data));
-        });
+        return this.http.delete(this.url + servicesNames.users + "/" +id, this.headers);
     }
 
-    getUsers() {
-        return this.http.get<User[]>(this.url + servicesNames.users).subscribe(data =>{
-            console.log("Result: "+ stringify(data));
-            for(let i in data){
-              console.log(data[i]);  
-            }
-        });
+    getUser(id: number): Observable<User>{
+        return this.http.get<User>(this.url + servicesNames.users + "/" +id, this.headers);
+    }
+
+    getUserByUsername(username: string): Observable<User>{
+        return this.http.get<User>(this.url + servicesNames.users + "?userNameParam=" +username, this.headers);
+    }
+
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(this.url + servicesNames.users);
     }
     
 }

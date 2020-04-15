@@ -13,34 +13,34 @@
         <div class="row mb-4">
             <div class="form-group col-sm-3 mr-2">
                 <label for="name">Name:</label>
-                <input type="text" formControlName="name" class="form-control" alfabeticoTag>
+                <input type="text" formControlName="name" class="form-control" alfabeticoTag required>
             </div>
     
             <div class="form-group col-sm-3 mr-2">
                 <label for="lastName">Last Name:</label>
-                <input type="text" formControlName="lastName" class="form-control" alfabeticoTag>
+                <input type="text" formControlName="lastName" class="form-control" alfabeticoTag required>
             </div>
     
             <div class="form-group col-sm-3 mr-2">
                 <label for="phone">Phone:</label>
-                <input type="text" formControlName="phone" class="form-control" appNumerosTag>
+                <input type="text" formControlName="phone" class="form-control" appNumerosTag required>
             </div>
         </div>
 
         <div class="row mb-4">
             <div class="form-group col-sm-3 mr-2">
                 <label for="email">Email:</label>
-                <input type="text" formControlName="email" class="form-control" appEmailvalidator>
+                <input type="text" formControlName="email" class="form-control" required>
             </div>
 
             <div class="form-group col-sm-3 mr-2">
                 <label for="lastName">Username:</label>
-                <input type="text" formControlName="userName" class="form-control">
+                <input type="text" formControlName="userName" class="form-control" required>
             </div>
     
             <div class="form-group col-sm-3 mr-2">
                 <label for="password">Password:</label>
-                <input type="password" formControlName="password" class="form-control">
+                <input type="password" formControlName="password" class="form-control" required>
                 <!-- <label><input type="checkbox"> Show password</label> -->
             </div>
         </div>
@@ -48,8 +48,8 @@
         <div class="row mb-4">
             <div class="form-group col-sm-6">
                 <label for="profile">Profile:</label>
-                <select class="form-control" (change)="profileSelected($event)" formControlName="profile">
-                    <option selected>Choose one...</option>
+                <select class="form-control" (change)="profileSelected($event)" formControlName="profile" required>
+                    <option value="0" [selected]="true" disabled>Choose one...</option>
                     <option value="1">Client</option>
                     <option value="2">Professional</option>
                 </select>
