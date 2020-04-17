@@ -47,24 +47,18 @@ export class RegisterComponent{
             email: this.registerForm.get('email').value,
             phone: this.registerForm.get('phone').value
         }
-        this.userService.saveUser(user);
-
-        this.registerForm.reset();
-
-    }
-
-    getUserByUsername = (userName: string) => {
-        this.userService.getUserByUsername(userName).subscribe(data => {
-            if(data[0]!=null){
-                console.log("hay datos");
+        this.userService.getUserByUsername(user.userName).toPromise().then(res =>{
+            console.log(res[0]);
+            if(null!=res[0]){
+                console.log("User exists!");    
             }else{
-                console.log("crear user");
+                console.log("User doesn't exist!");    
+                this,this.userService.saveUser(user);
+                this.registerForm.reset();
             }
-
-
-            //this.user2 = data[0];
-            //console.log(this.user2);
-        }); 
+        }).then(()=> {
+            console.log("User was saved!");
+        })
     }
 
     profileSelected = e => {

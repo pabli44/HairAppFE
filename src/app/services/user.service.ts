@@ -20,14 +20,8 @@ export class UserService{
     }
 
     saveUser(user: User){
-        this.getUserByUsername(user.userName).subscribe(data => {
-            if(data[0]!=null){
-                console.log("User Exists!");
-            }else{
-                this.http.post(this.url + servicesNames.users, user, this.headers).subscribe(user =>{
-                    console.log("User was Saved!");
-                });
-            }
+        this.http.post(this.url + servicesNames.users, user, this.headers).subscribe(user =>{
+            console.log(user);
         });
     }
     
