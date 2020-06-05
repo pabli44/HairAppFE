@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Profile } from '../../models/profile';
-import { stringify } from 'querystring';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'register',
@@ -28,7 +28,7 @@ export class RegisterComponent{
         profile: new FormControl('')
     });
 
-    constructor(private userService:UserService){
+    constructor(private userService:UserService, private toastr: ToastrService){
 
     }
 
@@ -48,17 +48,14 @@ export class RegisterComponent{
             phone: this.registerForm.get('phone').value
         }
         this.userService.getUserByUsername(user.userName).toPromise().then(res =>{
-            console.log(res[0]);
             if(null!=res[0]){
-                console.log("User exists!");    
+                this.toastr.info('User exists!', 'Messages: ');
             }else{
-                console.log("User doesn't exist!");    
+                this.toastr.info("User doesn't exist!", 'Messages: ');
                 this,this.userService.saveUser(user);
                 this.registerForm.reset();
             }
-        }).then(()=> {
-            console.log("User was saved!");
-        })
+        });
     }
 
     profileSelected = e => {
