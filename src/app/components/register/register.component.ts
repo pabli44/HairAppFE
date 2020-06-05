@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Profile } from '../../models/profile';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'register',
@@ -13,21 +14,21 @@ import { Profile } from '../../models/profile';
 export class RegisterComponent{
     title = "Register Page";
     user:User;
+    user2:User;
     profile:Profile;
     
 
     registerForm = new FormGroup({
         name: new FormControl(''),
         lastName: new FormControl(''),
-        phone: new FormControl(''),
-        email: new FormControl(''),
+        phone: new FormControl('', Validators.maxLength(10)),
+        email: new FormControl('', Validators.email),
         userName: new FormControl(''),
         password: new FormControl(''),
         profile: new FormControl('')
     });
 
-    constructor(private userService:UserService){
-
+    constructor(private userService:UserService, private toastr: ToastrService){
 
     }
 
@@ -46,14 +47,19 @@ export class RegisterComponent{
             email: this.registerForm.get('email').value,
             phone: this.registerForm.get('phone').value
         }
-        //this.userService.saveUser(user);      ok
-        //this.userService.deleteUser(6);       ok
-        //this.userService.updateUser(7, user); ok(fix the password in backend) 
-        //this.userService.getUsers();          ok
+        this.userService.getUserByUsername(user.userName).toPromise().then(res =>{
+            if(null!=res[0]){
+                this.toastr.info('User exists!', 'Messages: ');
+            }else{
+                this.toastr.info("User doesn't exist!", 'Messages: ');
+                this,this.userService.saveUser(user);
+                this.registerForm.reset();
+            }
+        });
     }
 
     profileSelected = e => {
-        //console.log(e.target.value);
+        console.log(e.target.value);
     }
    
 }
