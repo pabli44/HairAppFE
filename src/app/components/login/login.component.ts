@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'login',
@@ -9,17 +11,34 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 export class LoginComponent{
     title = 'Login Page';
+    email:string;
+    password:string;
 
     loginForm = new FormGroup({
-        email: new FormControl(''),
+        email: new FormControl('',Validators.email),
         password: new FormControl('')
     });
 
-    onSubmit = () =>{
+    constructor(private userService:UserService, private toastr: ToastrService){
 
-        let value = this.loginForm.value;
-        this.loginForm.controls['email'].setValue('Hola');
-        console.log(value.email);
-        //alert("On Submit");
+    }
+
+    onSubmit = () =>{
+        this.email = this.loginForm.get('email').value;
+        this.password = this.loginForm.get('password').value;
+
+        //consulta de usuario por email
+        this.userService.getUserByEmail(this.email).toPromise().then(res => {
+            if(null!=res[0]){
+                if(this.password!=res[0].password){
+                    this.toastr.error('Please, confirm your email and password', 'login Messages: ');
+                }else{
+                    this.toastr.success('Your login was successfully', 'login Messages: ');
+                }
+            }else{
+                this.toastr.error("This email doesn't exist, please register your user.", 'login Messages: ');
+            }
+        });
+    
     }
 }

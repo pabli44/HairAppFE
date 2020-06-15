@@ -5,8 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment, servicesNames } from './../../environments/environment';
 import { User } from '../models/user';
-import { stringify } from 'querystring';
-
 
 @Injectable({
     providedIn: 'root'
@@ -37,8 +35,8 @@ export class UserService{
         return this.http.get<User>(this.url + servicesNames.users + "/" +id, this.headers);
     }
 
-    getUserByUsername(username: string): Observable<User>{
-        return this.http.get<User>(this.url + servicesNames.users + "?userNameParam=" +username, this.headers);
+    getUserByEmail(email: string): Observable<User>{
+        return this.http.get<User>(this.url + servicesNames.users + "?emailParam=" +email, this.headers);
     }
 
     getUsers(): Observable<User[]> {

@@ -14,9 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent{
     title = "Register Page";
     user:User;
-    user2:User;
     profile:Profile;
-    
 
     registerForm = new FormGroup({
         name: new FormControl(''),
@@ -47,12 +45,12 @@ export class RegisterComponent{
             email: this.registerForm.get('email').value,
             phone: this.registerForm.get('phone').value
         }
-        this.userService.getUserByUsername(user.userName).toPromise().then(res =>{
+        this.userService.getUserByEmail(user.email).toPromise().then(res =>{
             if(null!=res[0]){
-                this.toastr.info('User exists!', 'Messages: ');
+                this.toastr.info('This email already exists!', 'Messages: ');
             }else{
-                this.toastr.info("User doesn't exist!", 'Messages: ');
-                this,this.userService.saveUser(user);
+                this.userService.saveUser(user);
+                this.toastr.success("User Was saved successfully", 'Messages: ');
                 this.registerForm.reset();
             }
         });
