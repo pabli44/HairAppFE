@@ -46,7 +46,8 @@ import { NumerosDirective } from './directives/numeros.directive';
     BrowserAnimationsModule,
     ToastrModule.forRoot(
       {
-        closeButton: true
+        closeButton: true,
+        progressBar: true
       }
     )    
   ],
