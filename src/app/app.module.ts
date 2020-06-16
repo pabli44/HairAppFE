@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 //components
 import { AppComponent } from './app.component';
@@ -17,6 +20,9 @@ import { AlfabeticoDirective } from './directives/alfabetico.directive';
 import { AlfabeticoNumericoDirective } from './directives/alfabeticonumerico.directive';
 import { EmailValidator } from "./directives/emailvalidator.directive";
 import { NumerosDirective } from './directives/numeros.directive';
+
+//services
+//import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -35,9 +41,16 @@ import { NumerosDirective } from './directives/numeros.directive';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        closeButton: true,
+        progressBar: true
+      }
+    )    
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
