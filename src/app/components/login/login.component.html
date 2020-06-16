@@ -2,13 +2,22 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <h2>Login</h2>
         <div class="form-group w-25">
-            <label for="email">Email or Username:</label>
+            <label for="email">Email:</label>
             <input type="text" id="email" formControlName="email" class="form-control" required>
         </div>
 
         <div class="form-group w-25">
             <label for="password">Password:</label>
             <input type="password" id="password" formControlName="password" class="form-control" required>
+        </div>
+
+        <div class="form-group w-25">
+            <label for="profile">Profile:</label>
+            <select class="form-control" formControlName="profile" required>
+                <option value="0" [selected]="true" disabled>Choose one...</option>
+                <option value="1">Client</option>
+                <option value="2">Professional</option>
+            </select>
         </div>
         
         <br>

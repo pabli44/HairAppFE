@@ -13,10 +13,13 @@ export class LoginComponent{
     title = 'Login Page';
     email:string;
     password:string;
+    profile:number;
+    userArray:any;
 
     loginForm = new FormGroup({
         email: new FormControl('',Validators.email),
-        password: new FormControl('')
+        password: new FormControl(''),
+        profile: new FormControl()
     });
 
     constructor(private userService:UserService, private toastr: ToastrService){
@@ -26,17 +29,25 @@ export class LoginComponent{
     onSubmit = () =>{
         this.email = this.loginForm.get('email').value;
         this.password = this.loginForm.get('password').value;
+        this.profile = this.loginForm.get('profile').value;
 
         //consulta de usuario por email
         this.userService.getUserByEmail(this.email).toPromise().then(res => {
-            if(null!=res[0]){
-                if(this.password!=res[0].password){
-                    this.toastr.error('Please, confirm your email and password', 'login Messages: ');
-                }else{
+            this.userArray = res;
+
+            if(this.userArray.length>1){
+                if(this.userArray[0].profile.profileId==this.profile && this.userArray[0].password===this.password){
                     this.toastr.success('Your login was successfully', 'login Messages: ');
+                }else if(this.userArray[1].profile.profileId==this.profile && this.userArray[1].password===this.password){
+                    this.toastr.success('Your login was successfully', 'login Messages: ');
+                }else{
+                    this.toastr.error('Please, confirm your data', 'login Messages: ');
                 }
+                return;
+            }else if(this.userArray[0].profile.profileId==this.profile && this.userArray[0].password===this.password){
+                this.toastr.success('Your login was successfully', 'login Messages: ');
             }else{
-                this.toastr.error("This email doesn't exist, please register your user.", 'login Messages: ');
+                this.toastr.error('Please, confirm your data', 'login Messages: ');
             }
         });
     
