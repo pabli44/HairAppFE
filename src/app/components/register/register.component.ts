@@ -15,6 +15,7 @@ export class RegisterComponent{
     title = "Register Page";
     user:User;
     profile:Profile;
+    userArray:any;
 
     registerForm = new FormGroup({
         name: new FormControl(''),
@@ -46,18 +47,23 @@ export class RegisterComponent{
             phone: this.registerForm.get('phone').value
         }
         this.userService.getUserByEmail(user.email).toPromise().then(res =>{
-            if(null!=res[0]){
-                this.toastr.info('This email already exists!', 'Messages: ');
+            //profiles validation
+            this.userArray = res;
+            if(this.userArray.length==2){
+                this.toastr.info('This email already exists with the two Profiles!', 'Messages: ');
+                return;
             }else{
-                this.userService.saveUser(user);
-                this.toastr.success("User Was saved successfully", 'Messages: ');
-                this.registerForm.reset();
+                if(user.profile.profileId==this.userArray[0].profile.profileId){
+                    this.toastr.info(`This email already exists with the ${this.userArray[0].profile.profileName} Profile, you must save with the other Profile`, 'Messages: ');
+                    return;
+                }
             }
-        });
-    }
 
-    profileSelected = e => {
-        console.log(e.target.value);
+            this.userService.saveUser(user);
+            this.toastr.success("User Was saved successfully", 'Messages: ');
+            this.registerForm.reset();
+
+        });
     }
    
 }
