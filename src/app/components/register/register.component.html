@@ -48,7 +48,7 @@
         <div class="row mb-4">
             <div class="form-group col-sm-6">
                 <label for="profile">Profile:</label>
-                <select class="form-control" (change)="profileSelected($event)" formControlName="profile" required>
+                <select class="form-control" formControlName="profile" required>
                     <option value="0" [selected]="true" disabled>Choose one...</option>
                     <option value="1">Client</option>
                     <option value="2">Professional</option>
