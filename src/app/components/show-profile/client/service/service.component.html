@@ -1,0 +1,43 @@
+<div class="container m-5">
+  <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+      <h2>Create Service</h2>
+      <div class="form-group">
+          <label for="adress">Adress:</label>
+          <input type="text" id="adress" formControlName="adress" class="form-control" required>
+      </div>
+
+      <div class="form-group w-25">
+          <label for="services">Services: </label>
+          <select>
+            <option value="1">Blower</option>
+            <option value="2">Corte</option>
+            <option value="3">Mamaracho</option>
+          </select>
+      </div>
+
+      <div class="form-group w-25">
+        <label for="date">Date: </label>
+        <input type="date" id="date" name="date" required />
+      </div>
+
+      <div class="form-group w-25">
+        <label for="Time">Time: </label>
+        <input type="text" id="time" name="time" required />
+      </div>
+
+
+      <div class="form-group w-25">
+        <label for="payment">Payment Method: </label>
+        <input type="text" value="PSE" id="payment" name="payment" required />
+      </div>
+      
+      <div class="form-group w-25">
+        <label for="value">Valor: $15.000</label>
+      </div>
+
+      
+      <br>
+      
+      <button type="submit" class="btn btn-success"  [disabled]="!serviceForm.valid">Create</button>
+  </form>
+</div>

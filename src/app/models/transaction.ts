@@ -1,5 +1,5 @@
 export interface Transaction {
     id?: string;
-    type_transaction?: string;
+    typeTransaction?: string;
     state?: string;
 }
