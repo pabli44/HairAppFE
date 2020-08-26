@@ -1,7 +1,7 @@
 import { TypeService } from "./type-service";
 
 export interface ServiceE {
-    id?: string;
+    serviceId?: string;
     typeService?: TypeService;
     state?: string;
 }

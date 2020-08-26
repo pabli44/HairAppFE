@@ -11,10 +11,12 @@ export const environment = {
 
 export const servicesNames = {
   profiles: "profiles",
-  serviceDetails: "serviceDetails",
+  servicedetails: "servicedetails",
   services: "services",
   transactions: "transactions",
-  users: "users"
+  users: "users",
+  adresses: "adresses",
+  typeservices: "typeservices"
 }
 
 

@@ -19,6 +19,7 @@ export class LoginComponent{
     userArray:any;
     isData:boolean= false;
     showName:string;
+    userIdToSession: string;
 
     loginForm = new FormGroup({
         email: new FormControl('',Validators.email),
@@ -28,6 +29,13 @@ export class LoginComponent{
 
     constructor(private userService:UserService, private toastr: ToastrService, private router:Router){
 
+    }
+
+    ngOnInit(){
+        console.log(100);
+        if(localStorage.getItem("UserSession")){
+            localStorage.clear();
+        }
     }
 
     onSubmit = () =>{
@@ -43,11 +51,12 @@ export class LoginComponent{
                 if(this.userArray[0].profile.profileId==this.profile && this.userArray[0].password===this.password){
                     this.toastr.success('Your login was successfully', 'login Messages: ');
                     this.showName = this.userArray[0].name;
-                    console.log(this.showName);
+                    this.userIdToSession = this.userArray[0].userId;
                     this.isData= true;
                 }else if(this.userArray[1].profile.profileId==this.profile && this.userArray[1].password===this.password){
                     this.toastr.success('Your login was successfully', 'login Messages: ');
                     this.showName = this.userArray[1].name;
+                    this.userIdToSession = this.userArray[1].userId;
                     this.isData= true;
                 }else{
                     this.toastr.error('Please, confirm your data', 'login Messages: ');
@@ -56,6 +65,7 @@ export class LoginComponent{
             }else if(this.userArray[0].profile.profileId==this.profile && this.userArray[0].password===this.password){
                 this.toastr.success('Your login was successfully', 'login Messages: ');
                 this.showName = this.userArray[0].name;
+                this.userIdToSession = this.userArray[0].userId;
                 this.isData= true;
             }else{
                 this.toastr.error('Please, confirm your data', 'login Messages: ');
@@ -63,10 +73,10 @@ export class LoginComponent{
 
             if(this.isData){
                 if(this.profile==1){
-                    localStorage.setItem("UserSession", "S");
+                    localStorage.setItem("UserSession", this.userIdToSession);
                     this.router.navigate(['/profile/client'], { queryParams: {name: this.showName} });
                 }else{
-                    localStorage.setItem("UserSession", "S");
+                    localStorage.setItem("UserSession", this.userIdToSession);
                     this.router.navigate(['/profile/professional'], { queryParams: {name: this.showName} });
                 }
             }

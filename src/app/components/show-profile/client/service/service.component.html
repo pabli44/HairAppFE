@@ -1,43 +1,71 @@
-<div class="container m-5">
+<div class="container m-4">
   <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
       <h2>Create Service</h2>
-      <div class="form-group">
-          <label for="adress">Adress:</label>
-          <input type="text" id="adress" formControlName="adress" class="form-control" required>
-      </div>
 
-      <div class="form-group w-25">
-          <label for="services">Services: </label>
-          <select>
-            <option value="1">Blower</option>
-            <option value="2">Corte</option>
-            <option value="3">Mamaracho</option>
-          </select>
-      </div>
+      <div class="container">
 
-      <div class="form-group w-25">
-        <label for="date">Date: </label>
-        <input type="date" id="date" name="date" required />
-      </div>
-
-      <div class="form-group w-25">
-        <label for="Time">Time: </label>
-        <input type="text" id="time" name="time" required />
-      </div>
-
-
-      <div class="form-group w-25">
-        <label for="payment">Payment Method: </label>
-        <input type="text" value="PSE" id="payment" name="payment" required />
-      </div>
       
-      <div class="form-group w-25">
-        <label for="value">Valor: $15.000</label>
-      </div>
+        <div class="row">
+          
+          <div class="col" [hidden]="!showUserAdresses">
+            <label for="Adresses">User Adresses: </label>
+            <select class="form-control" id="adresses" name="adresses> 
+              <option [ngValue]="ad" *ngFor="let ad of adresses">{{ad.adressId}} - {{ad.description}}</option>
+            </select>
+          </div>
 
+          <div class="form-group col w-25">
+              <label for="adress">Adress:</label>
+              <textarea class="form-control" id="adress" formControlName="adress" class="form-control" required></textarea>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+              <label for="services">Services: </label>
+              <select class="form-control" id="selectTypeService" name="selectTypeService" (change)="typeServiceSelected($event)"> 
+                <option [ngValue]="ts" *ngFor="let ts of typeServices">{{ts.typeServiceId}} - {{ts.serviceName}}</option>
+              </select>
+          </div>
+          
+          <div class="col">
+            <label for="price">Valor: </label>
+            <input class="form-control" type="text" formControlName="price" value="{{price | currency}}" readonly />
+          </div>
+
+          <div class="col">
+            <label for="date">Date: </label>
+            <input class="form-control" type="date" formControlName="date" required />
+          </div>
+    
+          <div class="col">
+            <label for="time">Time: </label>
+            <input type="text" class="form-control" formControlName="time" required />
+          </div>
+    
+        </div>
+
+        <hr>
+
+        
+        <div class="row">
+          
+          <div class="col-sm-4">
+            <label for="servicesQuantity">Services Quantity</label>
+            <input type="number" class="form-control" formControlName="servicesQuantity" value="1" required />
+          </div>
+
+          <div class="col">
+            <label for="payment">Payment Method: </label>
+            <input type="text" class="form-control" value="PSE" formControlName="payment" required />
+          </div>
+        </div>
+
+      </div>
+            
       
       <br>
-      
-      <button type="submit" class="btn btn-success"  [disabled]="!serviceForm.valid">Create</button>
+      <button type="submit" class="btn btn-success">Create</button>
   </form>
 </div>
