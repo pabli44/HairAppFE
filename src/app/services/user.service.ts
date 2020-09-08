@@ -1,5 +1,3 @@
-//Manage sign and login components
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -18,9 +16,7 @@ export class UserService{
     }
 
     saveUser(user: User){
-        this.http.post(this.url + servicesNames.users, user, this.headers).subscribe(user =>{
-            console.log(user);
-        });
+        return this.http.post(this.url + servicesNames.users, user, this.headers);
     }
     
     updateUser(id: number,user: User) {

@@ -1,14 +1,6 @@
 <div class="container m-5">
     <h2>Register Form</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-inline">
-        
-        
-        <!-- Mejora de apariencia, líneal
-        <div class="row">
-            <div class="col-sm"><label for="name">Name:</label></div>    
-            <div class="col-sm"><input type="text" formControlName="name" class="form-control" alfabeticoTag></div>
-        </div>
-        -->
 
         <div class="row mb-4">
             <div class="form-group col-sm-3 mr-2">
@@ -41,14 +33,20 @@
             <div class="form-group col-sm-3 mr-2">
                 <label for="password">Password:</label>
                 <input type="password" formControlName="password" class="form-control" required>
-                <!-- <label><input type="checkbox"> Show password</label> -->
             </div>
+
         </div>
 
         <div class="row mb-4">
+
             <div class="form-group col-sm-6">
+                <label for="adress">Adress:</label>
+                <input type="adress" formControlName="adress" class="form-control" required>
+            </div>
+
+            <div class="form-group col-sm-4">
                 <label for="profile">Profile:</label>
-                <select class="form-control" formControlName="profile" required>
+                <select class="form-control" formControlName="profile" (change)="changeProfile($event)" required>
                     <option value="0" [selected]="true" disabled>Choose one...</option>
                     <option value="1">Client</option>
                     <option value="2">Professional</option>
@@ -56,8 +54,8 @@
             </div>
         </div>
 
-
         <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Submit</button>    
+
         
     </form>
 </div>

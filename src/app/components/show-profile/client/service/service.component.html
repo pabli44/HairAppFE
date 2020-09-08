@@ -1,0 +1,84 @@
+<div class="container m-4">
+  <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+      <h2>Create Service</h2>
+
+      <div class="row">
+        <a [routerLink] = "['/profile/client/records']" class="nav-link" href="#">Records</a>
+        <a [routerLink] = "['/logout']" class="nav-link" href="#">Log Out</a>
+      </div>
+
+      <div class="container">
+
+      
+        <div class="row">
+          
+          <div class="col">
+            <label for="Adresses">User Adresses: </label>
+            <select class="form-control" id="adresses" name="adresses"> 
+              <option [ngValue]="ad" *ngFor="let ad of adresses">{{ad.adressId}} - {{ad.description}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col w-25">
+              <label for="adress"><b>New Adress:</b></label>
+              <textarea class="form-control" id="adress" formControlName="adress" placeholder="Optional..." class="form-control"></textarea>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+              <label for="services">Services: </label>
+              <select class="form-control" id="selectTypeService" name="selectTypeService" (change)="typeServiceSelected($event)"> 
+                <option [ngValue]="ts" *ngFor="let ts of typeServices">{{ts.typeServiceId}} - {{ts.serviceName}}</option>
+              </select>
+          </div>
+          
+          <div class="col">
+            <label for="price">Value: </label>
+            <input class="form-control" type="text" formControlName="price" value="{{price | currency:'COP'}}" readonly />
+          </div>
+
+          <div class="col">
+            <label for="date">Date: </label>
+            <input class="form-control" type="date" formControlName="date" required />
+          </div>
+    
+          <div class="col">
+            <label for="time">Time: </label>
+            <input type="text" class="form-control" formControlName="time" required />
+          </div>
+    
+        </div>
+
+        <hr>
+
+        
+        <div class="row">
+          
+          <div class="col-sm-4">
+            <label for="servicesQuantity">Services Quantity</label>
+            <input type="text" class="form-control" appNumerosTag formControlName="servicesQuantity" (keypress)="updateTotalPrice($event)" required />
+          </div>
+
+          <div class="col">
+            <label for="totalPrice">Total Price: </label>
+            <input type="text" class="form-control" formControlName="totalPrice" value="{{totalPrice | currency:'COP'}}" readonly/>
+          </div>
+          
+          <div class="col">
+            <label for="payment">Payment Method: </label>
+            <input type="text" class="form-control" value="PSE" formControlName="payment" required />
+          </div>
+
+
+
+        </div>
+
+      </div>
+            
+      
+      <br>
+      <button type="submit" class="btn btn-success" [disabled]="!serviceForm.valid">Create</button>
+  </form>
+</div>

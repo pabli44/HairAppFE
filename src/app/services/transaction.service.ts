@@ -5,7 +5,9 @@ import { environment, servicesNames } from '../../environments/environment';
 import { Transaction } from '../models/transaction';
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class TransactionService{
     url:string = environment.url;
     private headers = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -14,19 +16,27 @@ export class TransactionService{
 
     }
 
-    saveTransaction(body: any) {
-        return this.http.post(this.url + servicesNames.transactions, body, this.headers);
+    saveTransaction(transaction: Transaction) {
+        return this.http.post(this.url + servicesNames.transactions, transaction, this.headers);
     }
 
-    updateTransaction(id: any,body: any) {
-        return this.http.put(this.url + servicesNames.transactions + "/" +id, body, this.headers);
+    updateTransaction(id: any,transaction: Transaction) {
+        return this.http.put(this.url + servicesNames.transactions + "/" +id, transaction, this.headers);
     }
 
     deleteTransaction(id: any){
         return this.http.delete(this.url + servicesNames.transactions + "/" +id, this.headers)
     }
 
-    getTransaction() {
+    getTransaction(id: number): Observable<Transaction>{
+        return this.http.get<Transaction>(this.url + servicesNames.transactions + "/" +id, this.headers);
+    }
+
+    getTransactionByType(type: number): Observable<Transaction>{
+        return this.http.get<Transaction>(this.url + servicesNames.transactions + "?typeTransactionParam=" +type, this.headers);
+    }
+
+    getTransactions() {
         return this.http.get<Transaction[]>(this.url + servicesNames.transactions);
     }
     
