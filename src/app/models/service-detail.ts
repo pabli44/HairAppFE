@@ -5,10 +5,11 @@ import { ServiceE } from './serviceE';
 export interface ServiceDetail {
    serviceDetailsId?: string;
    service?: ServiceE;
-   user?: User;
+   client?: User;
    value?: string;
    date?: string;
    hour?: string;
    transaction?: Transaction;
-   quantity?: string
+   quantity?: string;
+   professional?: User;
 }

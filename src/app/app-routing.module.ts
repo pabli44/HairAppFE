@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'logout', component: LoginComponent},
   {path: 'profile', component: ShowProfileComponent},
   {path: 'profile/client', component: ClientComponent},
-  {path: 'profile/client/record', component: RecordComponent},
+  {path: 'profile/client/records', component: RecordComponent},
   {path: 'profile/client/create-new-service', component: ServiceComponent},
   {path: 'profile/professional', component: ProfessionalComponent}
 ];

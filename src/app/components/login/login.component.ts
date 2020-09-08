@@ -32,7 +32,6 @@ export class LoginComponent{
     }
 
     ngOnInit(){
-        console.log(100);
         if(localStorage.getItem("UserSession")){
             localStorage.clear();
         }

@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hairAppFE';
+  hideLogOut:boolean;
+
+
+  ngOnInit(){
+    if(localStorage.getItem("UserSession")){
+      this.hideLogOut = false;
+    }else{
+      this.hideLogOut = true;
+    }
+  }
+
 }

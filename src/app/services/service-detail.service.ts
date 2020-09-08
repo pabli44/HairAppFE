@@ -36,6 +36,14 @@ export class ServiceDetailService{
         return this.http.get<ServiceDetail>(this.url + servicesNames.servicedetails + "?serviceParam=" +service, this.headers);
     }
 
+    getServiceDetailByClient(client: number): Observable<ServiceDetail[]>{
+        return this.http.get<ServiceDetail[]>(this.url + servicesNames.servicedetails + "/client?clientParam=" +client, this.headers);
+    }
+
+    getServiceDetailByProfessional(professional: number): Observable<ServiceDetail[]>{
+        return this.http.get<ServiceDetail[]>(this.url + servicesNames.servicedetails + "/professional?professionalParam=" +professional, this.headers);
+    }
+
     getServiceDetails() {
         return this.http.get<ServiceDetail[]>(this.url + servicesNames.servicedetails);
     }

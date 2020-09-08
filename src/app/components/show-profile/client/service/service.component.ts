@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TypeService } from '../../../../models/type-service';
 import { TypeServiceService } from '../../../../services/type-service.service';
@@ -25,8 +25,7 @@ export class ServiceComponent {
   typeServices: TypeService[];
   adresses: Adress[];
   price: string;
-  showUserAdresses: boolean;
-  
+  totalPrice: string;
 
   typeServiceToSave: TypeService;
   userToSave: User;
@@ -39,10 +38,11 @@ export class ServiceComponent {
     date: new FormControl(),
     payment: new FormControl(),
     price: new FormControl(''),
-    servicesQuantity: new FormControl()
+    servicesQuantity: new FormControl('0', Validators.maxLength(1)),
+    totalPrice: new FormControl('')
 });
 
-  constructor(private activatedRoute:ActivatedRoute, private router:Router, private typeServiceService:TypeServiceService, private serviceDetailService: ServiceDetailService, 
+  constructor(private router:Router, private typeServiceService:TypeServiceService, private serviceDetailService: ServiceDetailService, 
     private adressService: AdressService, private serviceEService: ServiceEService, private userService: UserService, private transactionService: TransactionService,
     private toastr: ToastrService) { 
     this.typeServiceService.getTypeservices().subscribe(dataTypeServices => {
@@ -61,15 +61,19 @@ export class ServiceComponent {
     this.userId = localStorage.getItem("UserSession");    
     this.adressService.getAdressByUser(Number(this.userId)).subscribe(dataAdresses => {
       if(dataAdresses.length>0){
-        this.showUserAdresses = true;
         this.adresses = dataAdresses;
       }
     });
+
+    this.totalPrice = "0";
+  }
+
+  updateTotalPrice(e){
+    const total = Number(this.price) * e.key;
+    this.totalPrice = total.toString();
   }
 
   typeServiceSelected(e){
-    //console.log(e.target.value);
-
     this.typeServices.filter(ts =>{
       if(Number(ts.typeServiceId)-1===e.target.selectedIndex){
         this.price = ts.price;
@@ -79,20 +83,28 @@ export class ServiceComponent {
   }
 
   onSubmit = () =>{
-    //const userId = localStorage.getItem("UserSession");
+    if(this.serviceForm.get('servicesQuantity').value=="0" || Number(this.serviceForm.get('servicesQuantity').value)>3){
+      this.toastr.warning("The minimun Service Quantity field must be between 1 and 3, please check...", 'Messages: ');
+      return;
+    }
+
     this.userService.getUser(Number(this.userId)).subscribe(u => {
       this.userToSave = u;
     });
 
     //save direction
-    const adressSave: Adress = {
-      description: this.serviceForm.get('adress').value,
-      principal: 'N',
-      user: this.userId,
-      city: 'Medellin'
+    const adressText = this.serviceForm.get('adress').value;
+    if(adressText!=""){
+      const adressSave: Adress = {
+        description: this.serviceForm.get('adress').value,
+        principal: 'N',
+        user: this.userId,
+        city: 'Medellin'
+      }
+  
+      this.adressService.saveAdress(adressSave);
     }
 
-    this.adressService.saveAdress(adressSave);
 
     //save service
     const service: ServiceE = {
@@ -119,21 +131,24 @@ export class ServiceComponent {
       //save serviceDetail
       const serviceDetailSave: ServiceDetail = {
         service: service,
-        user: this.userToSave,
-        value: this.price,
+        client: this.userToSave,
+        value: this.totalPrice,
         date: this.serviceForm.get('date').value,
         hour: this.serviceForm.get('time').value,
         transaction,
-        quantity: this.serviceForm.get('servicesQuantity').value
+        quantity: this.serviceForm.get('servicesQuantity').value,
+        professional: this.userToSave //se guarda con el id del cliente mientras el profesional se asigna este servicio en las card, y se actualiza al id del profesional
       }
 
-      console.log("user to save: "+serviceDetailSave.user.userId);
+      console.log("client to save: "+serviceDetailSave.client.userId);
       console.log("service to save: "+serviceDetailSave.service.serviceId);
       console.log("transaction to save: "+serviceDetailSave.transaction.transactionId);
 
 
       this.serviceDetailService.saveServiceDetail(serviceDetailSave);
       this.toastr.success("This Service Was Saved successfully", 'Messages: ');
+
+      this.router.navigate(['/profile/client/records']);
 
     }, 4000);
 
