@@ -69,7 +69,7 @@ export class ServiceComponent {
   }
 
   updateTotalPrice(e){
-    const total = Number(this.price) * e.key;
+    const total = Number(this.price) * Number(this.serviceForm.get('servicesQuantity').value);
     this.totalPrice = total.toString();
   }
 
