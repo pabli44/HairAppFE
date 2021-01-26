@@ -69,7 +69,7 @@ export class ServiceComponent {
   }
 
   updateTotalPrice(e){
-    const total = Number(this.price) * e.key;
+    const total = Number(this.price) * Number(this.serviceForm.get('servicesQuantity').value);
     this.totalPrice = total.toString();
   }
 
@@ -137,7 +137,8 @@ export class ServiceComponent {
         hour: this.serviceForm.get('time').value,
         transaction,
         quantity: this.serviceForm.get('servicesQuantity').value,
-        professional: this.userToSave //se guarda con el id del cliente mientras el profesional se asigna este servicio en las card, y se actualiza al id del profesional
+        professional: this.userToSave, //se guarda con el id del cliente mientras el profesional se asigna este servicio en las card, y se actualiza al id del profesional
+        adress: adressText
       }
 
       console.log("client to save: "+serviceDetailSave.client.userId);
