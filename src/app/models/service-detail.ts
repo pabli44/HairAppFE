@@ -1,14 +1,17 @@
 import { User } from './user';
 import { Transaction } from './transaction';
 import { ServiceE } from './serviceE';
+import { Adress } from './adress';
 
 export interface ServiceDetail {
-   id?: string;
+   serviceDetailsId?: string;
    service?: ServiceE;
-   user?: User;
+   client?: User;
    value?: string;
    date?: string;
    hour?: string;
-   professional?: User;
    transaction?: Transaction;
+   quantity?: string;
+   professional?: User;
+   adress?: Adress
 }

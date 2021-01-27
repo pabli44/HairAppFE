@@ -1,0 +1,110 @@
+<div class="container m-5">
+  <form (ngSubmit)="onSubmit()">
+      Hello <h2><b>{{name}}</b></h2>
+
+      <div>
+        <a [routerLink] = "['/logout']" class="nav-link" href="#">Log Out</a>
+
+      </div>
+      <br>
+
+      <h3>Servicios Por Cumplir</h3>
+      <div class="container">
+
+        <div class="row">
+
+          <div class="flip-card text-white mb-3 mr-3" *ngFor="let sd of serviceDetailsProfessional">
+            <div class="flip-card-inner">
+
+              <div class="flip-card-front">
+                <div class="card-header"><b>{{sd.service.typeService.serviceName | uppercase}}</b></div>
+                <div class="card-body">
+                  <h5 class="card-title"><b>Cliente:</b>{{sd.client.name}} {{sd.client.lastName}}</h5>
+                  <p><b>Date:</b> {{sd.date | date:'dd-MM-yyyy'}}</p>
+                  <p><b>Hour:</b> {{sd.hour}}</p>
+                </div>
+              </div>
+
+              <div class="flip-card-back">
+                <div class="card-body">
+                  <p><b>Cantidad de Servicios:</b> {{sd.quantity}}</p>
+                  <p><b>Value:</b> {{sd.value | currency:'COP'}}</p>
+                  <p><b>Teléfono:</b> {{sd.client.phone}}</p>
+                  <p><b>Dirección:</b> {{sd.adress.description}}</p>
+                  <p><b>Ciudad:</b> {{sd.adress.city}}</p>
+                  <button type="button" class="btn btn-dark" (click)="changeProfessional(sd, 'unassign')">Desasignar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <h3>Servicios Disponibles</h3>
+      <div class="container">
+
+        <div class="row">
+
+
+          <div class="flip-card text-white mb-5 mr-3 mt-2" *ngFor="let sd of serviceDetailsProfessionalAll">
+            <div class="flip-card-inner">
+
+              <h1>
+                <span class="badge badge-secondary" *ngIf="serviceDetailsProfessionalAll.length==0">
+                  No Hay Servicios Disponibles.
+                </span>
+              </h1>
+
+              <div class="flip-card-front-available">
+                <div class="card-header"><b>{{sd.service.typeService.serviceName | uppercase}}</b></div>
+                <div class="card-body">
+                  <h5 class="card-title"><b>Cliente:</b>{{sd.client.name}} {{sd.client.lastName}}</h5>
+                  <p><b>Date:</b> {{sd.date | date:'dd-MM-yyyy'}}</p>
+                  <p><b>Hour:</b> {{sd.hour}}</p>
+                </div>
+              </div>
+
+              <div class="flip-card-back-available">
+                <div class="card-body">
+                  <p><b>Cantidad de Servicios:</b> {{sd.quantity}}</p>
+                  <p><b>Value:</b> {{sd.value | currency:'COP'}}</p>
+                  <p><b>Teléfono:</b> {{sd.client.phone}}</p>
+                  <p><b>Dirección:</b> {{sd.adress.description}}</p>
+                  <p><b>Ciudad:</b> {{sd.adress.city}}</p>
+                  <button type="button" class="btn btn-dark" (click)="changeProfessional(sd, 'assign')">Asignar</button>
+                </div>
+              </div>
+
+            </div>
+
+            <br>
+
+
+          </div>
+
+          <!-- <h1>
+            <span class="badge badge-secondary" *ngIf="!countServicesAvailable">
+              No Hay Servicios Disponibles.
+            </span>
+          </h1> -->
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+  </form>
+</div>

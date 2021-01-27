@@ -1,5 +1,7 @@
+import { TypeService } from "./type-service";
+
 export interface ServiceE {
-    id?: string;
-    serviceName?: string;
+    serviceId?: string;
+    typeService?: TypeService;
     state?: string;
 }

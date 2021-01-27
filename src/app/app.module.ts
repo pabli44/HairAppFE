@@ -14,6 +14,11 @@ import { ContactComponent } from './components/contact/contact.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
+import { ShowProfileComponent } from './components/show-profile/show-profile.component';
+import { ClientComponent } from './components/show-profile/client/client.component';
+import { RecordComponent } from './components/show-profile/client/record/record.component';
+import { ServiceComponent } from './components/show-profile/client/service/service.component';
+import { ProfessionalComponent } from './components/show-profile/professional/professional.component';
 
 //directives
 import { AlfabeticoDirective } from './directives/alfabetico.directive';
@@ -21,8 +26,6 @@ import { AlfabeticoNumericoDirective } from './directives/alfabeticonumerico.dir
 import { EmailValidator } from "./directives/emailvalidator.directive";
 import { NumerosDirective } from './directives/numeros.directive';
 
-//services
-//import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,11 @@ import { NumerosDirective } from './directives/numeros.directive';
     RegisterComponent,
     AboutComponent,
     LoginComponent,
+    ShowProfileComponent,
+    ClientComponent,
+    RecordComponent,
+    ServiceComponent,
+    ProfessionalComponent,
     AlfabeticoDirective,
     AlfabeticoNumericoDirective,
     EmailValidator,
