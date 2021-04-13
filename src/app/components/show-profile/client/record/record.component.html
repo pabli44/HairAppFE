@@ -12,8 +12,8 @@
 
           <div class="flip-card text-white mb-3 mr-3" *ngFor="let sd of serviceDetails" [hidden]="sd.professional.userId==sd.client.userId">
             <div class="flip-card-inner">
-              
-              <div [ngClass]="sd.transaction.state == 0?cardClassFront:cardClassFrontPaid">
+
+              <div [ngClass]="sd.transaction.state == '0'?cardClassFront:cardClassFrontPaid">
                 <div class="card-header"><b>{{sd.service.typeService.serviceName | uppercase}}</b></div>
                 <div class="card-body">
                   <h5 class="card-title"><b>Profesional:</b>{{sd.professional.name}} {{sd.professional.lastName}}</h5>
@@ -22,12 +22,12 @@
                 </div>
               </div>
 
-              <div [ngClass]="sd.transaction.state == 0?cardClassBack:cardClassBackPaid">
+              <div [ngClass]="sd.transaction.state == '0'?cardClassBack:cardClassBackPaid">
                 <div class="card-body">
                   <p><b>Cantidad de Servicios:</b> {{sd.quantity}}</p>
                   <p><b>Value:</b> {{sd.value | currency:'COP'}}</p>
-                  <p><b>Pago:</b> {{sd.transaction.typeTransaction == 1?'DEBITO':'CREDITO'}}</p>
-                  <p><b>Estado Transacción:</b> {{sd.transaction.state == 1?'PAGADO':'SIN PAGAR'}}</p>
+                  <p><b>Pago:</b> {{sd.transaction.typeTransaction == '1'?'DEBITO':'CREDITO'}}</p>
+                  <p><b>Estado Transacción:</b> {{sd.transaction.state == '1'?'PAGADO':'SIN PAGAR'}}</p>
                 </div>
               </div>
 
