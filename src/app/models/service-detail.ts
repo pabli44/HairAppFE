@@ -13,5 +13,5 @@ export interface ServiceDetail {
    transaction?: Transaction;
    quantity?: string;
    professional?: User;
-   adress?: Adress
+   adress?: Adress;
 }

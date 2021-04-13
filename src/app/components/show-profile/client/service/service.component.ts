@@ -24,6 +24,7 @@ export class ServiceComponent {
 
   typeServices: TypeService[];
   adresses: Adress[];
+  adressIdFind: string;
   price: string;
   totalPrice: string;
 
@@ -42,9 +43,9 @@ export class ServiceComponent {
     totalPrice: new FormControl('')
 });
 
-  constructor(private router:Router, private typeServiceService:TypeServiceService, private serviceDetailService: ServiceDetailService, 
+  constructor(private router:Router, private typeServiceService:TypeServiceService, private serviceDetailService: ServiceDetailService,
     private adressService: AdressService, private serviceEService: ServiceEService, private userService: UserService, private transactionService: TransactionService,
-    private toastr: ToastrService) { 
+    private toastr: ToastrService) {
     this.typeServiceService.getTypeservices().subscribe(dataTypeServices => {
       this.typeServices = dataTypeServices;
       this.price = dataTypeServices[0].price;
@@ -58,14 +59,16 @@ export class ServiceComponent {
       this.router.navigate(['/login']);
     }
 
-    this.userId = localStorage.getItem("UserSession");    
+    this.userId = localStorage.getItem("UserSession");
     this.adressService.getAdressByUser(Number(this.userId)).subscribe(dataAdresses => {
       if(dataAdresses.length>0){
         this.adresses = dataAdresses;
+        this.adressIdFind = this.adresses[0].adressId;
       }
     });
 
     this.totalPrice = "0";
+
   }
 
   updateTotalPrice(e){
@@ -82,6 +85,10 @@ export class ServiceComponent {
     })
   }
 
+  getAdress(e){
+    this.adressIdFind = e.target.value.substr(0,2);
+  }
+
   onSubmit = () =>{
     if(this.serviceForm.get('servicesQuantity').value=="0" || Number(this.serviceForm.get('servicesQuantity').value)>3){
       this.toastr.warning("The minimun Service Quantity field must be between 1 and 3, please check...", 'Messages: ');
@@ -92,30 +99,21 @@ export class ServiceComponent {
       this.userToSave = u;
     });
 
+
     //save direction
-    const adressText = this.serviceForm.get('adress').value;
-    if(adressText!=""){
-      const adressSave: Adress = {
-        description: this.serviceForm.get('adress').value,
-        principal: 'N',
-        user: this.userId,
-        city: 'Medellin'
-      }
-  
-      this.adressService.saveAdress(adressSave);
-    }
+    const adressToSave = this.adresses.find(ad => ad.adressId==this.adressIdFind);
 
 
     //save service
     const service: ServiceE = {
       typeService: this.typeServiceToSave,
-      state: 'N'  
+      state: 'N'
     }
 
     this.serviceEService.saveServiceE(service).subscribe(res => {
       service.serviceId = res["recordId"];
     });
-    
+
     //save transaction
     const transaction: Transaction = {
       typeTransaction: "1",
@@ -138,7 +136,7 @@ export class ServiceComponent {
         transaction,
         quantity: this.serviceForm.get('servicesQuantity').value,
         professional: this.userToSave, //se guarda con el id del cliente mientras el profesional se asigna este servicio en las card, y se actualiza al id del profesional
-        adress: adressText
+        adress: adressToSave
       }
 
       console.log("client to save: "+serviceDetailSave.client.userId);
@@ -157,7 +155,7 @@ export class ServiceComponent {
 
 
   }
-  
-  
+
+
 
 }

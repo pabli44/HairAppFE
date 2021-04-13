@@ -38,6 +38,10 @@ export class LoginComponent{
     }
 
     onSubmit = () =>{
+
+      try{
+
+
         this.email = this.loginForm.get('email').value;
         this.password = this.loginForm.get('password').value;
         this.profile = this.loginForm.get('profile').value;
@@ -81,6 +85,9 @@ export class LoginComponent{
             }
 
         });
-    
+      }catch(error){
+        console.log("API fails");
+        alert(error);
+      }
     }
 }
