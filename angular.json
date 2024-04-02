@@ -31,8 +31,8 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
+            //"es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hairAppFE:build"
+            "buildTarget": "hairAppFE:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hairAppFE:build:production"
+              "buildTarget": "hairAppFE:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hairAppFE:build"
+            "buildTarget": "hairAppFE:build"
           }
         },
         "test": {
@@ -137,6 +137,5 @@
         }
       }
     }
-  },
-  "defaultProject": "hairAppFE"
+  }
 }
