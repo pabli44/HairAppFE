@@ -13,6 +13,7 @@ import { ClientComponent } from './components/show-profile/client/client.compone
 import { RecordComponent } from './components/show-profile/client/record/record.component';
 import { ServiceComponent } from './components/show-profile/client/service/service.component';
 import { ProfessionalComponent } from './components/show-profile/professional/professional.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,4 +35,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routing: ModuleWithProviders<any> = RouterModule.forRoot(routes);
