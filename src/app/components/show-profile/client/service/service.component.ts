@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { TypeService } from '../../../../models/type-service';
 import { TypeServiceService } from '../../../../services/type-service.service';
 import { ServiceDetailService } from 'src/app/services/service-detail.service';
@@ -14,8 +14,12 @@ import { ServiceDetail } from 'src/app/models/service-detail';
 import { Transaction } from 'src/app/models/transaction';
 import { Adress } from 'src/app/models/adress';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
+  standalone: true,
+  imports: [RouterModule, CommonModule, ReactiveFormsModule],
   selector: 'app-service',
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.less']
@@ -32,7 +36,10 @@ export class ServiceComponent {
   userToSave: User;
   userId: string;
 
-  serviceForm = new FormGroup({
+  serviceForm: FormGroup;
+
+
+  /*serviceForm = new FormGroup({
     adress: new FormControl('',Validators.email),
     time: new FormControl(),
     selectTypeService: new FormControl(),
@@ -41,11 +48,22 @@ export class ServiceComponent {
     price: new FormControl(''),
     servicesQuantity: new FormControl('0', Validators.maxLength(1)),
     totalPrice: new FormControl('')
-});
+});*/
 
   constructor(private router:Router, private typeServiceService:TypeServiceService, private serviceDetailService: ServiceDetailService,
     private adressService: AdressService, private serviceEService: ServiceEService, private userService: UserService, private transactionService: TransactionService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService, private formBuilder:FormBuilder) {
+      this.serviceForm = this.formBuilder.group({
+        adress: ['', Validators.required],
+        time: ['', Validators.required],
+        selectTypeService: ['', Validators.required],
+        date: ['', Validators.required],
+        payment: ['', Validators.required],
+        price: [''],
+        servicesQuantity: ['0', Validators.maxLength(1)],
+        totalPrice: ['']
+      });
+
     this.typeServiceService.getTypeservices().subscribe(dataTypeServices => {
       this.typeServices = dataTypeServices;
       this.price = dataTypeServices[0].price;
