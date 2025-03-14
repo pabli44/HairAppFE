@@ -26,24 +26,8 @@ import { AlfabeticoNumericoDirective } from './directives/alfabeticonumerico.dir
 import { EmailValidator } from "./directives/emailvalidator.directive";
 import { NumerosDirective } from './directives/numeros.directive';
 
-
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    ContactComponent,
-    RegisterComponent,
-    AboutComponent,
-    LoginComponent,
-    ShowProfileComponent,
-    ClientComponent,
-    RecordComponent,
-    ServiceComponent,
-    ProfessionalComponent,
-    AlfabeticoDirective,
-    AlfabeticoNumericoDirective,
-    EmailValidator,
-    NumerosDirective
   ],
   imports: [
     BrowserModule,
@@ -52,13 +36,14 @@ import { NumerosDirective } from './directives/numeros.directive';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(
-      {
-        closeButton: true,
-        progressBar: true
-      }
-    )    
+    ToastrModule.forRoot({
+      closeButton: true,
+      progressBar: true
+    }),
+    AppComponent,
+    HomeComponent
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

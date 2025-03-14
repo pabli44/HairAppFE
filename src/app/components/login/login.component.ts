@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
+    standalone: true,
+    imports: [RouterModule, ReactiveFormsModule, CommonModule],
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.less']
@@ -21,13 +25,20 @@ export class LoginComponent{
     showName:string;
     userIdToSession: string;
 
-    loginForm = new FormGroup({
+    /*loginForm = new FormGroup({
         email: new FormControl('',Validators.email),
         password: new FormControl(''),
         profile: new FormControl()
-    });
+    });*/
 
-    constructor(private userService:UserService, private toastr: ToastrService, private router:Router){
+    loginForm: FormGroup;
+
+    constructor(private userService:UserService, private toastr: ToastrService, private router:Router, private formBuilder:FormBuilder) {
+        this.loginForm = this.formBuilder.group({
+            email: ['', Validators.required],
+            password: ['', Validators.required],
+            profile: ['', Validators.required]
+        });
 
     }
 
