@@ -24,6 +24,8 @@ export class LoginComponent{
     isData:boolean= false;
     showName:string;
     userIdToSession: string;
+    showPassword = false;
+    isSubmitting = false;
 
     /*loginForm = new FormGroup({
         email: new FormControl('',Validators.email),
@@ -35,7 +37,7 @@ export class LoginComponent{
 
     constructor(private userService:UserService, private toastr: ToastrService, private router:Router, private formBuilder:FormBuilder) {
         this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required],
             profile: ['', Validators.required]
         });
@@ -51,6 +53,12 @@ export class LoginComponent{
     onSubmit = () =>{
 
       try{
+        if (this.loginForm.invalid || this.isSubmitting) {
+            this.loginForm.markAllAsTouched();
+            return;
+        }
+
+        this.isSubmitting = true;
 
 
         this.email = this.loginForm.get('email').value;
@@ -95,10 +103,16 @@ export class LoginComponent{
                 }
             }
 
+            this.isSubmitting = false;
+
+        }).catch(() => {
+            this.isSubmitting = false;
+            this.toastr.error('Login failed. Please try again.', 'login Messages: ');
         });
       }catch(error){
         console.log("API fails");
         alert(error);
+        this.isSubmitting = false;
       }
     }
 }
