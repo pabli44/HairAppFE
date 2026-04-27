@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'hairAppFE';
+  title = 'hair-app-fe';
   hideLogOut:boolean;
 
 
