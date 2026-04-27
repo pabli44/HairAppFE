@@ -3,13 +3,13 @@ import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } 
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 
 
 @Component({
     standalone: true,
-    imports: [RouterModule, ReactiveFormsModule, CommonModule],
+    imports: [RouterModule, ReactiveFormsModule],
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.less']

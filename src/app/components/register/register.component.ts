@@ -6,12 +6,12 @@ import { ToastrService } from 'ngx-toastr';
 import { AdressService } from 'src/app/services/adress.service';
 import { Adress } from 'src/app/models/adress';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     standalone: true,
-    imports: [RouterModule, ReactiveFormsModule, CommonModule],
+    imports: [RouterModule, ReactiveFormsModule],
     selector: 'register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.less']
