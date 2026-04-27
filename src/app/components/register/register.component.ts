@@ -22,16 +22,18 @@ export class RegisterComponent{
     user:User;
     userArray:any;
     profileId: string;
+    showPassword = false;
+    isSubmitting = false;
 
     registerForm = new FormGroup({
-        name: new FormControl(''),
-        lastName: new FormControl(''),
-        phone: new FormControl('', Validators.maxLength(10)),
-        email: new FormControl('', Validators.email),
-        userName: new FormControl(''),
-        password: new FormControl(''),
-        profile: new FormControl(),
-        adress: new FormControl('')
+        name: new FormControl('', Validators.required),
+        lastName: new FormControl('', Validators.required),
+        phone: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        userName: new FormControl('', Validators.required),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        profile: new FormControl('', Validators.required),
+        adress: new FormControl('', Validators.required)
     });
 
     constructor(private userService:UserService, private toastr: ToastrService, private adressService: AdressService){
@@ -39,6 +41,14 @@ export class RegisterComponent{
     }
 
     onSubmit() {
+        if (this.registerForm.invalid || this.isSubmitting) {
+            this.registerForm.markAllAsTouched();
+            return;
+        }
+
+        this.isSubmitting = true;
+        this.profileId = this.registerForm.get('profile').value;
+
         this.userService.getUserByEmail(this.registerForm.get('email').value).toPromise().then(res =>{
             //profiles validation
             this.userArray = res;
@@ -46,10 +56,12 @@ export class RegisterComponent{
             if(this.userArray.length>0){
                 if(this.userArray.length==2){
                     this.toastr.info('This email already exists with the two Profiles!', 'Messages: ');
+                    this.isSubmitting = false;
                     return;
                 }else{
                     if(this.profileId==this.userArray[0].profile.profileId){
                         this.toastr.info(`This email already exists with the ${this.userArray[0].profile.profileName} Profile, you must save with the other Profile`, 'Messages: ');
+                        this.isSubmitting = false;
                         return;
                     }
                 }
@@ -84,6 +96,7 @@ export class RegisterComponent{
                 //this.registerForm.reset();
             }
 
+            this.isSubmitting = false;
         });
       
     }
