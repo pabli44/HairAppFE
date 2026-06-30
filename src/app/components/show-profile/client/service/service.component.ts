@@ -7,11 +7,9 @@ import { ServiceDetailService } from 'src/app/services/service-detail.service';
 import { AdressService } from 'src/app/services/adress.service';
 import { ServiceEService } from 'src/app/services/serviceE.service';
 import { UserService } from 'src/app/services/user.service';
-import { TransactionService } from 'src/app/services/transaction.service';
 import { User } from 'src/app/models/user';
 import { ServiceE } from 'src/app/models/serviceE';
 import { ServiceDetail } from 'src/app/models/service-detail';
-import { Transaction } from 'src/app/models/transaction';
 import { Adress } from 'src/app/models/adress';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
@@ -51,7 +49,7 @@ export class ServiceComponent {
 });*/
 
   constructor(private router:Router, private typeServiceService:TypeServiceService, private serviceDetailService: ServiceDetailService,
-    private adressService: AdressService, private serviceEService: ServiceEService, private userService: UserService, private transactionService: TransactionService,
+    private adressService: AdressService, private serviceEService: ServiceEService, private userService: UserService,
     private toastr: ToastrService, private formBuilder:FormBuilder) {
       this.serviceForm = this.formBuilder.group({
         adress: ['', Validators.required],
@@ -132,17 +130,6 @@ export class ServiceComponent {
       service.serviceId = res["recordId"];
     });
 
-    //save transaction
-    const transaction: Transaction = {
-      typeTransaction: "1",
-      state: "1"
-    }
-
-    this.transactionService.saveTransaction(transaction).subscribe(res => {
-      transaction.transactionId = res["recordId"];
-    });
-
-
     setTimeout(() => {
       //save serviceDetail
       const serviceDetailSave: ServiceDetail = {
@@ -151,15 +138,14 @@ export class ServiceComponent {
         value: this.totalPrice,
         date: this.serviceForm.get('date').value,
         hour: this.serviceForm.get('time').value,
-        transaction,
         quantity: this.serviceForm.get('servicesQuantity').value,
         professional: this.userToSave, //se guarda con el id del cliente mientras el profesional se asigna este servicio en las card, y se actualiza al id del profesional
-        adress: adressToSave
+        adress: adressToSave,
+        paid: 'N'
       }
 
       console.log("client to save: "+serviceDetailSave.client.userId);
       console.log("service to save: "+serviceDetailSave.service.serviceId);
-      console.log("transaction to save: "+serviceDetailSave.transaction.transactionId);
 
 
       this.serviceDetailService.saveServiceDetail(serviceDetailSave);
