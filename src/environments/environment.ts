@@ -13,7 +13,7 @@ export const servicesNames = {
   profiles: "profiles",
   servicedetails: "servicedetails",
   services: "services",
-  transactions: "transactions",
+
   users: "users",
   adresses: "adresses",
   typeservices: "typeservices"
