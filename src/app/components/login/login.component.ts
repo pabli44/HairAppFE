@@ -44,12 +44,6 @@ export class LoginComponent{
 
     }
 
-    ngOnInit(){
-        if(localStorage.getItem("UserSession")){
-            localStorage.clear();
-        }
-    }
-
     onSubmit = () =>{
 
       try{
