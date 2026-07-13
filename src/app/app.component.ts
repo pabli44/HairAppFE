@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -10,15 +10,17 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'hair-app-fe';
-  hideLogOut:boolean;
+  hideLogOut = true;
 
+  constructor(private router: Router) {}
 
   ngOnInit(){
-    if(localStorage.getItem("UserSession")){
-      this.hideLogOut = false;
-    }else{
-      this.hideLogOut = true;
-    }
+    this.hideLogOut = !localStorage.getItem("UserSession");
   }
 
+  logout(){
+    localStorage.removeItem("UserSession");
+    this.hideLogOut = true;
+    this.router.navigate(['/home']);
+  }
 }

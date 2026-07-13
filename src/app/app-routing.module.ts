@@ -8,6 +8,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { ShowProfileComponent } from './components/show-profile/show-profile.component';
 import { ClientComponent } from './components/show-profile/client/client.component';
 import { RecordComponent } from './components/show-profile/client/record/record.component';
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'profile', component: ShowProfileComponent},
   {path: 'profile/client', component: ClientComponent},
   {path: 'profile/client/records', component: RecordComponent},
