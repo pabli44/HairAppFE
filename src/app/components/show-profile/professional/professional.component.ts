@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ServiceDetailService } from 'src/app/services/service-detail.service';
 import { ServiceDetail } from 'src/app/models/service-detail';
 
+
 @Component({
+  standalone: true,
+  imports: [RouterModule],
   selector: 'app-professional',
   templateUrl: './professional.component.html',
   styleUrls: ['./professional.component.less']

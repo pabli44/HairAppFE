@@ -1,5 +1,4 @@
 import { User } from './user';
-import { Transaction } from './transaction';
 import { ServiceE } from './serviceE';
 import { Adress } from './adress';
 
@@ -10,8 +9,8 @@ export interface ServiceDetail {
    value?: string;
    date?: string;
    hour?: string;
-   transaction?: Transaction;
    quantity?: string;
    professional?: User;
-   adress?: Adress
+   adress?: Adress;
+   paid?: string;
 }

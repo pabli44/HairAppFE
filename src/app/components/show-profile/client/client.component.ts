@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
+  standalone: true,
+  imports: [RouterModule],
   selector: 'app-client',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.less']

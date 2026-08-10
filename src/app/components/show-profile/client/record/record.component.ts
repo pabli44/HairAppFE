@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ServiceDetailService } from 'src/app/services/service-detail.service';
 import { ServiceDetail } from 'src/app/models/service-detail';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
+  imports: [RouterModule, ReactiveFormsModule, CommonModule],
   selector: 'app-record',
   templateUrl: './record.component.html',
   styleUrls: ['./record.component.less']

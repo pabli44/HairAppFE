@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
+
 
 
 @Component({
+    standalone: true,
+    imports: [RouterModule, ReactiveFormsModule],
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.less']
@@ -20,24 +24,37 @@ export class LoginComponent{
     isData:boolean= false;
     showName:string;
     userIdToSession: string;
+    showPassword = false;
+    isSubmitting = false;
 
-    loginForm = new FormGroup({
+    /*loginForm = new FormGroup({
         email: new FormControl('',Validators.email),
         password: new FormControl(''),
         profile: new FormControl()
-    });
+    });*/
 
-    constructor(private userService:UserService, private toastr: ToastrService, private router:Router){
+    loginForm: FormGroup;
 
-    }
+    constructor(private userService:UserService, private toastr: ToastrService, private router:Router, private formBuilder:FormBuilder) {
+        this.loginForm = this.formBuilder.group({
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', Validators.required],
+            profile: ['', Validators.required]
+        });
 
-    ngOnInit(){
-        if(localStorage.getItem("UserSession")){
-            localStorage.clear();
-        }
     }
 
     onSubmit = () =>{
+
+      try{
+        if (this.loginForm.invalid || this.isSubmitting) {
+            this.loginForm.markAllAsTouched();
+            return;
+        }
+
+        this.isSubmitting = true;
+
+
         this.email = this.loginForm.get('email').value;
         this.password = this.loginForm.get('password').value;
         this.profile = this.loginForm.get('profile').value;
@@ -80,7 +97,16 @@ export class LoginComponent{
                 }
             }
 
+            this.isSubmitting = false;
+
+        }).catch(() => {
+            this.isSubmitting = false;
+            this.toastr.error('Login failed. Please try again.', 'login Messages: ');
         });
-    
+      }catch(error){
+        console.log("API fails");
+        alert(error);
+        this.isSubmitting = false;
+      }
     }
 }
