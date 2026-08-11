@@ -1,0 +1,51 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: hairapp-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: pvelillaDevLocal
+      MYSQL_DATABASE: htalent_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ppvelillaDevLocal"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build:
+      context: ../intellijProjects/HairAppBE
+      dockerfile: Dockerfile
+    container_name: hairapp-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/htalent_db?serverTimezone=UTC&useLegacyDatetimeCode=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: pvelillaDevLocal
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hairapp-frontend
+    restart: unless-stopped
+    ports:
+      - "4200:8080"
+    depends_on:
+      - backend
+
+volumes:
+  mysql-data:
+    name: hairapp-mysql-data
