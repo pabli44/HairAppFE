@@ -14,10 +14,11 @@ import { Adress } from 'src/app/models/adress';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
+  imports: [RouterModule, CommonModule, ReactiveFormsModule, TranslatePipe],
   selector: 'app-service',
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.less']
@@ -50,7 +51,7 @@ export class ServiceComponent {
 
   constructor(private router:Router, private typeServiceService:TypeServiceService, private serviceDetailService: ServiceDetailService,
     private adressService: AdressService, private serviceEService: ServiceEService, private userService: UserService,
-    private toastr: ToastrService, private formBuilder:FormBuilder) {
+    private toastr: ToastrService, private formBuilder:FormBuilder, private translate: TranslateService) {
       this.serviceForm = this.formBuilder.group({
         adress: ['', Validators.required],
         time: ['', Validators.required],
@@ -107,7 +108,7 @@ export class ServiceComponent {
 
   onSubmit = () =>{
     if(this.serviceForm.get('servicesQuantity').value=="0" || Number(this.serviceForm.get('servicesQuantity').value)>3){
-      this.toastr.warning("The minimun Service Quantity field must be between 1 and 3, please check...", 'Messages: ');
+      this.toastr.warning(this.translate.instant('TOAST.SERVICE_QUANTITY_INVALID'), this.translate.instant('SERVICE.TOAST_TITLE'));
       return;
     }
 
@@ -149,7 +150,7 @@ export class ServiceComponent {
 
 
       this.serviceDetailService.saveServiceDetail(serviceDetailSave);
-      this.toastr.success("This Service Was Saved successfully", 'Messages: ');
+      this.toastr.success(this.translate.instant('TOAST.SERVICE_SAVED'), this.translate.instant('SERVICE.TOAST_TITLE'));
 
       this.router.navigate(['/profile/client/records']);
 

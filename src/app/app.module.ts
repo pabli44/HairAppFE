@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 //components
 import { AppComponent } from './app.component';
@@ -38,12 +40,24 @@ import { NumerosDirective } from './directives/numeros.directive';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       closeButton: true,
-      progressBar: true
+      progressBar: true,
+      positionClass: 'toast-top-right',
+      timeOut: 3500,
+      extendedTimeOut: 1500,
+      tapToDismiss: true,
+      newestOnTop: true,
+      progressAnimation: 'increasing'
     }),
     AppComponent,
     HomeComponent
   ],
-  providers: [],
+  providers: [
+    provideTranslateService({
+      lang: 'en',
+      fallbackLang: 'en',
+      loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })
+    })
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

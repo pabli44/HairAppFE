@@ -1,34 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Router, RouterModule } from '@angular/router';
 import { ServiceDetailService } from 'src/app/services/service-detail.service';
 import { ServiceDetail } from 'src/app/models/service-detail';
-
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, TranslatePipe],
   selector: 'app-professional',
   templateUrl: './professional.component.html',
   styleUrls: ['./professional.component.less']
 })
 export class ProfessionalComponent implements OnInit {
-  name:string = "";
   userId: string;
-  countServicesAvailable: boolean;
-  serviceDetailsProfessional:ServiceDetail[];
-  serviceDetailsProfessionalAll:ServiceDetail[];
+  serviceDetailsProfessional: ServiceDetail[] = [];
+  serviceDetailsProfessionalAll: ServiceDetail[] = [];
 
-  constructor(private activatedRoute:ActivatedRoute, private router:Router, private serviceDetailService:ServiceDetailService) { }
+  constructor(private router: Router, private serviceDetailService: ServiceDetailService) { }
 
   ngOnInit() {
     if(localStorage.getItem("UserSession")){
-      this.activatedRoute
-        .queryParams
-        .subscribe(params => {
-          this.name = params['name'];
-        });
-
         this.userId = localStorage.getItem("UserSession");
 
         //services by professional
@@ -59,7 +50,5 @@ export class ProfessionalComponent implements OnInit {
 
     this.serviceDetailService.updateServiceDetail(serviceDetailObject.serviceDetailsId, serviceDetailObject).subscribe();
   }
-
-
 
 }

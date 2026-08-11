@@ -1,1 +1,24 @@
-<p>{{title}}</p>
+<section class="contact py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+        <img src="assets/images/contact.svg" alt="{{ 'CONTACT.IMAGE_ALT' | translate }}" class="img-fluid">
+      </div>
+      <div class="col-12 col-lg-6">
+        <h1 class="mb-3">{{ 'CONTACT.TITLE' | translate }}</h1>
+        <p class="lead text-muted mb-4">{{ 'CONTACT.SUBTITLE' | translate }}</p>
+        <ul class="list-unstyled contact-list mb-0">
+          <li class="mb-2">
+            <strong>{{ 'CONTACT.EMAIL_LABEL' | translate }}:</strong> {{ 'CONTACT.EMAIL_VALUE' | translate }}
+          </li>
+          <li class="mb-2">
+            <strong>{{ 'CONTACT.PHONE_LABEL' | translate }}:</strong> {{ 'CONTACT.PHONE_VALUE' | translate }}
+          </li>
+          <li class="mb-2">
+            <strong>{{ 'CONTACT.ADDRESS_LABEL' | translate }}:</strong> {{ 'CONTACT.ADDRESS_VALUE' | translate }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

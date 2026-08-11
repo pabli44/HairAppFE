@@ -4,8 +4,8 @@
       <div class="col-12 col-sm-10 col-md-7 col-lg-5">
         <div class="card shadow-sm auth-card">
           <div class="card-body p-4 p-md-5">
-            <h1 class="h4 mb-1">Sign in</h1>
-            <p class="text-muted mb-4">Use your email and profile to access your account.</p>
+            <h1 class="h4 mb-1">{{ 'LOGIN.TITLE' | translate }}</h1>
+            <p class="text-muted mb-4">{{ 'LOGIN.SUBTITLE' | translate }}</p>
 
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
               <div class="form-floating mb-3">
@@ -13,38 +13,38 @@
                   id="email"
                   type="email"
                   class="form-control"
-                  placeholder="name@example.com"
+                  placeholder="{{ 'LOGIN.EMAIL_PLACEHOLDER' | translate }}"
                   formControlName="email"
                   autocomplete="email"
                   [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
                 />
-                <label for="email">Email</label>
-                <div class="invalid-feedback">Enter a valid email.</div>
+                <label for="email">{{ 'LOGIN.EMAIL' | translate }}</label>
+                <div class="invalid-feedback">{{ 'LOGIN.EMAIL_INVALID' | translate }}</div>
               </div>
 
               <div class="mb-3">
-                <label class="form-label" for="profile">Profile</label>
+                <label class="form-label" for="profile">{{ 'LOGIN.PROFILE' | translate }}</label>
                 <select
                   id="profile"
                   class="form-select"
                   formControlName="profile"
                   [class.is-invalid]="loginForm.get('profile')?.touched && loginForm.get('profile')?.invalid"
                 >
-                  <option value="" disabled>Select profile</option>
-                  <option value="1">Client</option>
-                  <option value="2">Professional</option>
+                  <option value="" disabled>{{ 'LOGIN.PROFILE_SELECT' | translate }}</option>
+                  <option value="1">{{ 'LOGIN.PROFILE_PROFESSIONAL' | translate }}</option>
+                  <option value="2">{{ 'LOGIN.PROFILE_CLIENT' | translate }}</option>
                 </select>
-                <div class="invalid-feedback">Select a profile.</div>
+                <div class="invalid-feedback">{{ 'LOGIN.PROFILE_INVALID' | translate }}</div>
               </div>
 
               <div class="mb-4">
-                <label class="form-label" for="password">Password</label>
+                <label class="form-label" for="password">{{ 'LOGIN.PASSWORD' | translate }}</label>
                 <div class="input-group">
                   <input
                     id="password"
                     [type]="showPassword ? 'text' : 'password'"
                     class="form-control"
-                    placeholder="Password"
+                    placeholder="{{ 'LOGIN.PASSWORD' | translate }}"
                     formControlName="password"
                     autocomplete="current-password"
                     [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
@@ -55,14 +55,14 @@
                     (click)="showPassword = !showPassword"
                     [attr.aria-pressed]="showPassword"
                   >
-                    {{ showPassword ? 'Hide' : 'Show' }}
+                    {{ showPassword ? ('LOGIN.HIDE' | translate) : ('LOGIN.SHOW' | translate) }}
                   </button>
                 </div>
                 <div
                   class="invalid-feedback d-block"
                   [class.d-none]="!(loginForm.get('password')?.touched && loginForm.get('password')?.invalid)"
                 >
-                  Password is required.
+                  {{ 'LOGIN.PASSWORD_REQUIRED' | translate }}
                 </div>
               </div>
 
@@ -71,13 +71,13 @@
                 class="btn btn-success w-100"
                 [disabled]="loginForm.invalid || isSubmitting"
               >
-                {{ isSubmitting ? 'Signing in…' : 'Sign in' }}
+                {{ isSubmitting ? ('LOGIN.SIGNING_IN' | translate) : ('LOGIN.SIGN_IN' | translate) }}
               </button>
             </form>
 
             <div class="auth-divider"></div>
             <p class="mb-0 text-muted small">
-              New here? <a [routerLink]="['/register']">Create an account</a>
+              {{ 'LOGIN.NEW_HERE' | translate }} <a [routerLink]="['/register']">{{ 'LOGIN.CREATE_ACCOUNT' | translate }}</a>
             </p>
           </div>
         </div>

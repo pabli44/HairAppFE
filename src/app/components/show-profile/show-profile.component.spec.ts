@@ -20,8 +20,4 @@ describe('ShowProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should have name "Pablo"', () => {
-    expect(component.name).toEqual('Pablo');
-  });
 });

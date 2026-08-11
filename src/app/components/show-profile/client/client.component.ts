@@ -1,33 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, TranslatePipe],
   selector: 'app-client',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.less']
 })
 export class ClientComponent implements OnInit {
-  name:string = "";
-
-  constructor(private activatedRoute:ActivatedRoute, private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-
-    if(localStorage.getItem("UserSession")){
-      this.activatedRoute
-        .queryParams
-        .subscribe(params => {
-          this.name = params['name'];
-        });
-    }else{
+    if (!localStorage.getItem("UserSession")) {
       this.router.navigate(['/login']);
     }
-
-
   }
-
 }

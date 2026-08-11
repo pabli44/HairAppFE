@@ -1,0 +1,28 @@
+<div
+  class="language-switcher btn-group btn-group-sm"
+  role="group"
+  aria-label="language selector"
+>
+  <button
+    type="button"
+    class="btn"
+    [class.btn-primary]="currentLang === 'en'"
+    [class.btn-outline-light]="currentLang !== 'en'"
+    (click)="setLanguage('en')"
+    [attr.aria-label]="'LANG.EN' | translate"
+    [attr.aria-pressed]="currentLang === 'en'"
+  >
+    EN
+  </button>
+  <button
+    type="button"
+    class="btn"
+    [class.btn-primary]="currentLang === 'es'"
+    [class.btn-outline-light]="currentLang !== 'es'"
+    (click)="setLanguage('es')"
+    [attr.aria-label]="'LANG.ES' | translate"
+    [attr.aria-pressed]="currentLang === 'es'"
+  >
+    ES
+  </button>
+</div>

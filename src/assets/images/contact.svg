@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Contact us placeholder">
+  <defs>
+    <linearGradient id="contact-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="55%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="contact-bubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#contact-bg)"/>
+  <rect x="420" y="140" width="360" height="320" rx="36" fill="url(#contact-bubble)" stroke="#ffffff" stroke-opacity="0.5" stroke-width="4"/>
+  <path d="M600 460 C600 490 560 510 520 500 C580 500 600 490 610 460 Z" fill="#ffffff" fill-opacity="0.5"/>
+  <circle cx="600" cy="300" r="72" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="8"/>
+  <path d="M560 268 C570 250 600 245 625 260" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M590 300 L600 312 L616 298" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="250" cy="170" r="70" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="950" cy="430" r="90" fill="#ffffff" fill-opacity="0.15"/>
+  <circle cx="120" cy="460" r="40" fill="#ffffff" fill-opacity="0.25"/>
+  <circle cx="1080" cy="140" r="36" fill="#ffffff" fill-opacity="0.25"/>
+  <rect x="90" y="80" width="140" height="22" rx="11" fill="#ffffff" fill-opacity="0.35"/>
+  <rect x="990" y="300" width="120" height="22" rx="11" fill="#ffffff" fill-opacity="0.35"/>
+</svg>
