@@ -4,10 +4,11 @@ import { ServiceDetailService } from 'src/app/services/service-detail.service';
 import { ServiceDetail } from 'src/app/models/service-detail';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, CommonModule],
+  imports: [RouterModule, ReactiveFormsModule, CommonModule, TranslatePipe],
   selector: 'app-record',
   templateUrl: './record.component.html',
   styleUrls: ['./record.component.less']
@@ -15,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class RecordComponent implements OnInit {
 
   userId: string;
-  serviceDetails: ServiceDetail[];
+  serviceDetails: ServiceDetail[] = [];
   cardClassFront: string;
   cardClassBack: string;
   cardClassFrontPaid: string;

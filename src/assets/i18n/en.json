@@ -1,0 +1,173 @@
+{
+  "NAV": {
+    "TOGGLE": "Toggle navigation",
+    "HOME": "Home",
+    "ABOUT": "About us",
+    "CONTACT": "Contact us",
+    "REGISTER": "Register",
+    "LOGIN": "Log In",
+    "LOGOUT": "Log Out"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "COPYRIGHT 2019 - Created By Pablo Velilla"
+  },
+  "HOME": {
+    "TITLE": "Welcome to HairApp",
+    "SUBTITLE": "Professional beauty services at your fingertips.",
+    "CTA": "Get started",
+    "HERO_ALT": "Hair salon hero image"
+  },
+  "ABOUT": {
+    "TITLE": "About us",
+    "SUBTITLE": "We connect clients with professional stylists in one place.",
+    "BODY_1": "HairApp brings together talented stylists and clients looking for professional beauty services. Book your next appointment quickly and securely.",
+    "BODY_2": "This page is a placeholder. Soon you will find here the story of our team and the values that drive our community of beauty professionals.",
+    "IMAGE_ALT": "About us image"
+  },
+  "CONTACT": {
+    "TITLE": "Contact us",
+    "SUBTITLE": "Get in touch with our team.",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_VALUE": "contact@hairapp.com",
+    "PHONE_LABEL": "Phone",
+    "PHONE_VALUE": "+57 300 000 0000",
+    "ADDRESS_LABEL": "Address",
+    "ADDRESS_VALUE": "Medellín, Colombia",
+    "IMAGE_ALT": "Contact us image"
+  },
+  "LOGIN": {
+    "TITLE": "Sign in",
+    "SUBTITLE": "Use your email and profile to access your account.",
+    "EMAIL_PLACEHOLDER": "name@example.com",
+    "EMAIL": "Email",
+    "EMAIL_INVALID": "Enter a valid email.",
+    "PROFILE": "Profile",
+    "PROFILE_SELECT": "Select profile",
+    "PROFILE_PROFESSIONAL": "Professional",
+    "PROFILE_CLIENT": "Client",
+    "PROFILE_INVALID": "Select a profile.",
+    "PASSWORD": "Password",
+    "HIDE": "Hide",
+    "SHOW": "Show",
+    "PASSWORD_REQUIRED": "Password is required.",
+    "SIGNING_IN": "Signing in…",
+    "SIGN_IN": "Sign in",
+    "NEW_HERE": "New here?",
+    "CREATE_ACCOUNT": "Create an account",
+    "TOAST_TITLE": "login Messages: "
+  },
+  "REGISTER": {
+    "TITLE": "Create account",
+    "SUBTITLE": "Fill in your details to register.",
+    "HAVE_ACCOUNT": "Already have an account?",
+    "SIGN_IN": "Sign in",
+    "NAME": "Name",
+    "NAME_REQUIRED": "Name is required.",
+    "LAST_NAME": "Last name",
+    "LAST_NAME_REQUIRED": "Last name is required.",
+    "PHONE": "Phone",
+    "PHONE_INVALID": "Enter a valid phone (max 10 digits).",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "name@example.com",
+    "EMAIL_INVALID": "Enter a valid email.",
+    "USERNAME": "Username",
+    "USERNAME_REQUIRED": "Username is required.",
+    "PASSWORD": "Password",
+    "HIDE": "Hide",
+    "SHOW": "Show",
+    "PASSWORD_INVALID": "Password is required (min 6 characters).",
+    "PROFILE": "Profile",
+    "PROFILE_SELECT": "Select profile",
+    "PROFILE_PROFESSIONAL": "Professional",
+    "PROFILE_CLIENT": "Client",
+    "PROFILE_INVALID": "Select a profile.",
+    "ADDRESS": "Address",
+    "ADDRESS_REQUIRED": "Address is required.",
+    "CREATING": "Creating…",
+    "TOAST_TITLE": "Messages: "
+  },
+  "SHOW_PROFILE": {
+    "HELLO": "Hello ",
+    "RECORD": "Record",
+    "CREATE_SERVICE": "Create Service",
+    "REDIRECTING": "Redirecting..."
+  },
+  "CLIENT": {
+    "HELLO": "Hello ",
+    "RECORDS": "Records",
+    "CREATE_SERVICE": "Create Service",
+    "RECORDS_DESC": "View your service history",
+    "CREATE_DESC": "Book a new appointment"
+  },
+  "RECORD": {
+    "TITLE": "Records",
+    "CREATE_SERVICE": "Create Service",
+    "LOGOUT": "Log Out",
+    "PROFESSIONAL": "Professional:",
+    "DATE": "Date:",
+    "HOUR": "Hour:",
+    "QUANTITY": "Services quantity:",
+    "VALUE": "Value:",
+    "STATUS": "Status:",
+    "PAID": "Paid",
+    "UNPAID": "Unpaid",
+    "EMPTY": "No records found."
+  },
+  "SERVICE": {
+    "TITLE": "Create Service",
+    "RECORDS": "Records",
+    "LOGOUT": "Log Out",
+    "USER_ADDRESSES": "User Addresses: ",
+    "SERVICES": "Services: ",
+    "VALUE": "Value: ",
+    "DATE": "Date: ",
+    "TIME": "Time: ",
+    "QUANTITY": "Services Quantity",
+    "TOTAL": "Total Price: ",
+    "PAYMENT_METHOD": "Payment Method: ",
+    "CREATE": "Create",
+    "TOAST_TITLE": "Messages: "
+  },
+  "PROFESSIONAL": {
+    "HELLO": "Hello ",
+    "LOGOUT": "Log Out",
+    "TO_FULFILL": "Services to fulfill",
+    "CLIENT": "Client:",
+    "DATE": "Date:",
+    "HOUR": "Hour:",
+    "QUANTITY": "Services quantity:",
+    "VALUE": "Value:",
+    "PHONE": "Phone:",
+    "ADDRESS": "Address:",
+    "CITY": "City:",
+    "UNASSIGN": "Unassign",
+    "AVAILABLE": "Available services",
+    "NO_SERVICES": "No available services.",
+    "NO_SERVICES_FULFILL": "No services assigned yet.",
+    "ASSIGN": "Assign"
+  },
+  "TOAST": {
+    "LOGIN_SUCCESS": "Your login was successfully",
+    "LOGIN_DATA_INVALID": "Please, confirm your data",
+    "LOGIN_FAILED": "Login failed. Please try again.",
+    "EMAIL_EXISTS_BOTH": "This email already exists with the two Profiles!",
+    "EMAIL_EXISTS_PROFILE": "This email already exists with the {{profileName}} Profile, you must save with the other Profile",
+    "USER_SAVED": "User Was saved successfully",
+    "SERVICE_QUANTITY_INVALID": "The minimum Service Quantity field must be between 1 and 3, please check...",
+    "SERVICE_SAVED": "This Service Was Saved successfully"
+  },
+  "LANG": {
+    "EN": "English",
+    "ES": "Español"
+  },
+  "SHELL": {
+    "WELCOME_BACK": "Welcome back,",
+    "ROLE_CLIENT": "Client",
+    "ROLE_PROFESSIONAL": "Professional",
+    "LOGOUT": "Log out",
+    "MENU": "Menu",
+    "RECORDS": "My records",
+    "CREATE_SERVICE": "Create service",
+    "SERVICES": "My services"
+  }
+}

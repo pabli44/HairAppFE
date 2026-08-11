@@ -14,6 +14,7 @@ import { ClientComponent } from './components/show-profile/client/client.compone
 import { RecordComponent } from './components/show-profile/client/record/record.component';
 import { ServiceComponent } from './components/show-profile/client/service/service.component';
 import { ProfessionalComponent } from './components/show-profile/professional/professional.component';
+import { DashboardShellComponent } from './components/dashboard-shell/dashboard-shell.component';
 import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
@@ -24,11 +25,13 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'profile', component: ShowProfileComponent},
-  {path: 'profile/client', component: ClientComponent},
-  {path: 'profile/client/records', component: RecordComponent},
-  {path: 'profile/client/create-new-service', component: ServiceComponent},
-  {path: 'profile/professional', component: ProfessionalComponent}
+  {path: 'profile', component: DashboardShellComponent, children: [
+    { path: '', component: ShowProfileComponent },
+    { path: 'client', component: ClientComponent },
+    { path: 'client/records', component: RecordComponent },
+    { path: 'client/create-new-service', component: ServiceComponent },
+    { path: 'professional', component: ProfessionalComponent }
+  ]}
 ];
 
 @NgModule({

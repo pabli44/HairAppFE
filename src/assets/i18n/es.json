@@ -1,0 +1,173 @@
+{
+  "NAV": {
+    "TOGGLE": "Alternar navegación",
+    "HOME": "Inicio",
+    "ABOUT": "Sobre nosotros",
+    "CONTACT": "Contacto",
+    "REGISTER": "Registrarse",
+    "LOGIN": "Iniciar sesión",
+    "LOGOUT": "Cerrar sesión"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "COPYRIGHT 2019 - Creado por Pablo Velilla"
+  },
+  "HOME": {
+    "TITLE": "Bienvenido a HairApp",
+    "SUBTITLE": "Servicios de belleza profesionales al alcance de tu mano.",
+    "CTA": "Comenzar",
+    "HERO_ALT": "Imagen principal de la peluquería"
+  },
+  "ABOUT": {
+    "TITLE": "Sobre nosotros",
+    "SUBTITLE": "Conectamos clientes con estilistas profesionales en un solo lugar.",
+    "BODY_1": "HairApp reúne a estilistas talentosos y clientes que buscan servicios de belleza profesionales. Reserva tu próxima cita de forma rápida y segura.",
+    "BODY_2": "Esta página es un marcador de posición. Pronto encontrarás aquí la historia de nuestro equipo y los valores que mueven a nuestra comunidad de profesionales de la belleza.",
+    "IMAGE_ALT": "Imagen de Sobre nosotros"
+  },
+  "CONTACT": {
+    "TITLE": "Contacto",
+    "SUBTITLE": "Comunícate con nuestro equipo.",
+    "EMAIL_LABEL": "Correo electrónico",
+    "EMAIL_VALUE": "contact@hairapp.com",
+    "PHONE_LABEL": "Teléfono",
+    "PHONE_VALUE": "+57 300 000 0000",
+    "ADDRESS_LABEL": "Dirección",
+    "ADDRESS_VALUE": "Medellín, Colombia",
+    "IMAGE_ALT": "Imagen de Contacto"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "SUBTITLE": "Usa tu correo electrónico y perfil para acceder a tu cuenta.",
+    "EMAIL_PLACEHOLDER": "nombre@ejemplo.com",
+    "EMAIL": "Correo electrónico",
+    "EMAIL_INVALID": "Introduce un correo electrónico válido.",
+    "PROFILE": "Perfil",
+    "PROFILE_SELECT": "Selecciona un perfil",
+    "PROFILE_PROFESSIONAL": "Profesional",
+    "PROFILE_CLIENT": "Cliente",
+    "PROFILE_INVALID": "Selecciona un perfil.",
+    "PASSWORD": "Contraseña",
+    "HIDE": "Ocultar",
+    "SHOW": "Mostrar",
+    "PASSWORD_REQUIRED": "La contraseña es obligatoria.",
+    "SIGNING_IN": "Iniciando sesión…",
+    "SIGN_IN": "Iniciar sesión",
+    "NEW_HERE": "¿Eres nuevo?",
+    "CREATE_ACCOUNT": "Crear una cuenta",
+    "TOAST_TITLE": "Mensajes de inicio de sesión: "
+  },
+  "REGISTER": {
+    "TITLE": "Crear cuenta",
+    "SUBTITLE": "Completa tus datos para registrarte.",
+    "HAVE_ACCOUNT": "¿Ya tienes una cuenta?",
+    "SIGN_IN": "Iniciar sesión",
+    "NAME": "Nombre",
+    "NAME_REQUIRED": "El nombre es obligatorio.",
+    "LAST_NAME": "Apellido",
+    "LAST_NAME_REQUIRED": "El apellido es obligatorio.",
+    "PHONE": "Teléfono",
+    "PHONE_INVALID": "Introduce un teléfono válido (máximo 10 dígitos).",
+    "EMAIL": "Correo electrónico",
+    "EMAIL_PLACEHOLDER": "nombre@ejemplo.com",
+    "EMAIL_INVALID": "Introduce un correo electrónico válido.",
+    "USERNAME": "Nombre de usuario",
+    "USERNAME_REQUIRED": "El nombre de usuario es obligatorio.",
+    "PASSWORD": "Contraseña",
+    "HIDE": "Ocultar",
+    "SHOW": "Mostrar",
+    "PASSWORD_INVALID": "La contraseña es obligatoria (mínimo 6 caracteres).",
+    "PROFILE": "Perfil",
+    "PROFILE_SELECT": "Selecciona un perfil",
+    "PROFILE_PROFESSIONAL": "Profesional",
+    "PROFILE_CLIENT": "Cliente",
+    "PROFILE_INVALID": "Selecciona un perfil.",
+    "ADDRESS": "Dirección",
+    "ADDRESS_REQUIRED": "La dirección es obligatoria.",
+    "CREATING": "Creando…",
+    "TOAST_TITLE": "Mensajes: "
+  },
+  "SHOW_PROFILE": {
+    "HELLO": "Hola ",
+    "RECORD": "Registro",
+    "CREATE_SERVICE": "Crear servicio",
+    "REDIRECTING": "Redirigiendo..."
+  },
+  "CLIENT": {
+    "HELLO": "Hola ",
+    "RECORDS": "Registros",
+    "CREATE_SERVICE": "Crear servicio",
+    "RECORDS_DESC": "Consulta tu historial de servicios",
+    "CREATE_DESC": "Agenda un nuevo servicio"
+  },
+  "RECORD": {
+    "TITLE": "Registros",
+    "CREATE_SERVICE": "Crear servicio",
+    "LOGOUT": "Cerrar sesión",
+    "PROFESSIONAL": "Profesional:",
+    "DATE": "Fecha:",
+    "HOUR": "Hora:",
+    "QUANTITY": "Cantidad de servicios:",
+    "VALUE": "Valor:",
+    "STATUS": "Estado:",
+    "PAID": "PAGADO",
+    "UNPAID": "SIN PAGAR",
+    "EMPTY": "No se encontraron registros."
+  },
+  "SERVICE": {
+    "TITLE": "Crear servicio",
+    "RECORDS": "Registros",
+    "LOGOUT": "Cerrar sesión",
+    "USER_ADDRESSES": "Direcciones del usuario: ",
+    "SERVICES": "Servicios: ",
+    "VALUE": "Valor: ",
+    "DATE": "Fecha: ",
+    "TIME": "Hora: ",
+    "QUANTITY": "Cantidad de servicios",
+    "TOTAL": "Precio total: ",
+    "PAYMENT_METHOD": "Método de pago: ",
+    "CREATE": "Crear",
+    "TOAST_TITLE": "Mensajes: "
+  },
+  "PROFESSIONAL": {
+    "HELLO": "Hola ",
+    "LOGOUT": "Cerrar sesión",
+    "TO_FULFILL": "Servicios por cumplir",
+    "CLIENT": "Cliente:",
+    "DATE": "Fecha:",
+    "HOUR": "Hora:",
+    "QUANTITY": "Cantidad de servicios:",
+    "VALUE": "Valor:",
+    "PHONE": "Teléfono:",
+    "ADDRESS": "Dirección:",
+    "CITY": "Ciudad:",
+    "UNASSIGN": "Desasignar",
+    "AVAILABLE": "Servicios disponibles",
+    "NO_SERVICES": "No hay servicios disponibles.",
+    "NO_SERVICES_FULFILL": "Aún no tienes servicios asignados.",
+    "ASSIGN": "Asignar"
+  },
+  "TOAST": {
+    "LOGIN_SUCCESS": "Tu inicio de sesión fue exitoso",
+    "LOGIN_DATA_INVALID": "Por favor, confirma tus datos",
+    "LOGIN_FAILED": "El inicio de sesión falló. Inténtalo de nuevo.",
+    "EMAIL_EXISTS_BOTH": "¡Este correo electrónico ya existe con los dos perfiles!",
+    "EMAIL_EXISTS_PROFILE": "Este correo electrónico ya existe con el perfil {{profileName}}, debes guardar con el otro perfil",
+    "USER_SAVED": "El usuario se guardó correctamente",
+    "SERVICE_QUANTITY_INVALID": "El campo de cantidad de servicios mínimo debe estar entre 1 y 3, por favor verifica...",
+    "SERVICE_SAVED": "El servicio se guardó correctamente"
+  },
+  "LANG": {
+    "EN": "Inglés",
+    "ES": "Español"
+  },
+  "SHELL": {
+    "WELCOME_BACK": "Bienvenido/a,",
+    "ROLE_CLIENT": "Cliente",
+    "ROLE_PROFESSIONAL": "Profesional",
+    "LOGOUT": "Cerrar sesión",
+    "MENU": "Menú",
+    "RECORDS": "Mis registros",
+    "CREATE_SERVICE": "Crear servicio",
+    "SERVICES": "Mis servicios"
+  }
+}

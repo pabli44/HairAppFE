@@ -8,4 +8,14 @@ app.get('/*', function(req, res) {
   );
 });
 
-app.listen(process.env.PORT || 8080);
+const PORT = process.env.PORT || 3000;
+
+const server = app.listen(PORT, () => {
+  console.log(`Hair App FE running at http://localhost:${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
+});
+
+server.on('error', (err) => {
+  console.error(`Failed to start server on port ${PORT}:`, err.message);
+  process.exit(1);
+});

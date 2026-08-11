@@ -3,13 +3,14 @@ import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } 
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, RouterModule } from '@angular/router';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 
 
 
 @Component({
     standalone: true,
-    imports: [RouterModule, ReactiveFormsModule],
+    imports: [RouterModule, ReactiveFormsModule, TranslatePipe],
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.less']
@@ -35,7 +36,7 @@ export class LoginComponent{
 
     loginForm: FormGroup;
 
-    constructor(private userService:UserService, private toastr: ToastrService, private router:Router, private formBuilder:FormBuilder) {
+    constructor(private userService:UserService, private toastr: ToastrService, private router:Router, private formBuilder:FormBuilder, private translate: TranslateService) {
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required],
@@ -63,45 +64,38 @@ export class LoginComponent{
         this.userService.getUserByEmail(this.email).toPromise().then(res => {
             this.userArray = res;
 
-            if(this.userArray.length>1){
-                if(this.userArray[0].profile.profileId==this.profile && this.userArray[0].password===this.password){
-                    this.toastr.success('Your login was successfully', 'login Messages: ');
-                    this.showName = this.userArray[0].name;
-                    this.userIdToSession = this.userArray[0].userId;
-                    this.isData= true;
-                }else if(this.userArray[1].profile.profileId==this.profile && this.userArray[1].password===this.password){
-                    this.toastr.success('Your login was successfully', 'login Messages: ');
-                    this.showName = this.userArray[1].name;
-                    this.userIdToSession = this.userArray[1].userId;
-                    this.isData= true;
-                }else{
-                    this.toastr.error('Please, confirm your data', 'login Messages: ');
-                }
-                //return;
-            }else if(this.userArray[0].profile.profileId==this.profile && this.userArray[0].password===this.password){
-                this.toastr.success('Your login was successfully', 'login Messages: ');
-                this.showName = this.userArray[0].name;
-                this.userIdToSession = this.userArray[0].userId;
-                this.isData= true;
-            }else{
-                this.toastr.error('Please, confirm your data', 'login Messages: ');
+            // Coincidencia por email ingresado (case-insensitive)
+            const userMatches = this.userArray.filter(
+                user => user.email.toLowerCase() === this.email.toLowerCase()
+            );
+
+            // Entre los que coinciden, el del perfil seleccionado
+            const matchedUser = userMatches.find(
+                user => user.profile.profileId == this.profile
+            );
+
+            if (matchedUser && matchedUser.password === this.password) {
+                this.toastr.success(this.translate.instant('TOAST.LOGIN_SUCCESS'), this.translate.instant('LOGIN.TOAST_TITLE'));
+                this.showName = matchedUser.name;
+                this.userIdToSession = matchedUser.userId;
+                this.isData = true;
+            } else {
+                this.toastr.error(this.translate.instant('TOAST.LOGIN_DATA_INVALID'), this.translate.instant('LOGIN.TOAST_TITLE'));
             }
 
-            if(this.isData){
-                if(this.profile==1){
-                    localStorage.setItem("UserSession", this.userIdToSession);
-                    this.router.navigate(['/profile/client'], { queryParams: {name: this.showName} });
-                }else{
-                    localStorage.setItem("UserSession", this.userIdToSession);
-                    this.router.navigate(['/profile/professional'], { queryParams: {name: this.showName} });
-                }
+            if (this.isData){
+                localStorage.setItem("UserSession", this.userIdToSession);
+                localStorage.setItem("UserProfile", String(this.profile));
+                // Profile 1 = Profesional, Profile 2 = Cliente
+                const route = this.profile == 2 ? '/profile/client' : '/profile/professional';
+                this.router.navigate([route], { queryParams: {name: this.showName} });
             }
 
             this.isSubmitting = false;
 
         }).catch(() => {
             this.isSubmitting = false;
-            this.toastr.error('Login failed. Please try again.', 'login Messages: ');
+            this.toastr.error(this.translate.instant('TOAST.LOGIN_FAILED'), this.translate.instant('LOGIN.TOAST_TITLE'));
         });
       }catch(error){
         console.log("API fails");

@@ -5,7 +5,55 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: white;
-    color: white;
+    background-color: #343a40 !important;
+    color: #f8f9fa !important;
     text-align: center;
- }
+    margin: 0 !important;
+    padding: 0.5rem 0 !important;
+    z-index: 1000;
+}
+
+/* Toastr custom overrides */
+.toast {
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    font-size: 0.95rem;
+    border: none;
+    padding: 12px 16px;
+}
+
+.toast-success {
+    background-color: #198754;
+    color: #fff;
+}
+
+.toast-error {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.toast-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.toast-info {
+    background-color: #0dcaf0;
+    color: #212529;
+}
+
+.toast-progress {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.toast-title {
+    font-weight: 600;
+}
+
+.toast-message {
+    opacity: 0.95;
+}
+
+.toast-container {
+    margin-top: 56px;
+}

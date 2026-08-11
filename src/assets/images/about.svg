@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="About us placeholder">
+  <defs>
+    <linearGradient id="about-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="55%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+    <linearGradient id="about-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#about-bg)"/>
+  <rect x="380" y="120" width="440" height="360" rx="40" fill="url(#about-card)" stroke="#ffffff" stroke-opacity="0.5" stroke-width="4"/>
+  <rect x="420" y="160" width="360" height="280" rx="28" fill="none" stroke="#ffffff" stroke-opacity="0.3" stroke-width="3"/>
+  <circle cx="600" cy="270" r="70" fill="#ffffff" fill-opacity="0.25"/>
+  <circle cx="600" cy="270" r="34" fill="#ffffff" fill-opacity="0.5"/>
+  <circle cx="430" cy="150" r="54" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="780" cy="440" r="62" fill="#ffffff" fill-opacity="0.2"/>
+  <path d="M150 480 C220 400 320 380 400 450 C470 510 560 520 660 470" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1050 120 C980 190 900 200 840 150" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="10" stroke-linecap="round"/>
+  <polygon points="960,470 1010,510 1010,470 1040,470 1040,420 990,390 950,430" fill="#ffffff" fill-opacity="0.35"/>
+</svg>
